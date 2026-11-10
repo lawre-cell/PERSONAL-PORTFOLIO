@@ -9,6 +9,10 @@ A bespoke, high-performance portfolio tailored for **Lawrence** ([@Lawrence-cell
 ## ✦ Key Design & Engineering Features
 
 ### 1. Retro-Futurist Studio Notebook & Datasheet Aesthetic
+- **Projected Screen Video Background**:
+  - Full-screen ambient video projection layer integrated seamlessly behind all content and 3D glass artifacts.
+  - Optical beam vignette, CRT phosphor scanlines, and theme-adaptive color grading.
+  - Interactive controls: `[PROJ: ON / VIVID / OFF]` and `[FEED: 01 / 02]` toggle to switch between video recordings.
 - **Dual Visual Modes**:
   - **Dark Mode (Default)**: Deep obsidian abyss, glowing cyan/indigo telemetry lights, frosted acrylic refraction.
   - **Light Mode**: High-precision clinical silver-grey parchment with electric ultramarine accents.

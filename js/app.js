@@ -135,6 +135,7 @@ class PortfolioApp {
 
     this.initClock();
     this.initTheme();
+    this.initProjector();
     this.initAudioToggle();
     this.initCustomCursor();
     this.initViewToggles();
@@ -196,6 +197,104 @@ class PortfolioApp {
     themeBtn.innerHTML = theme === 'light' 
       ? '<span class="pulse-dot" style="background:#0077b6;"></span> LIGHT' 
       : '<span class="pulse-dot"></span> DARK';
+  }
+
+  /* ========================================================================
+     2.5. PROJECTED SCREEN BACKGROUND SYSTEM
+     ======================================================================== */
+  initProjector() {
+    const layer = document.getElementById('projectorLayer');
+    const video = document.getElementById('bgVideoPlayer');
+    const toggleBtn = document.getElementById('projectorToggleBtn');
+    const switchBtn = document.getElementById('switchFeedBtn');
+
+    if (!layer || !video) return;
+
+    // Available feeds
+    this.projectorFeeds = [
+      'assets/videos/background-feed.mp4',
+      'assets/videos/feed-alt.mp4'
+    ];
+    this.currentFeedIndex = 0;
+
+    // Modes: 'ambient' -> 'vivid' -> 'off'
+    this.projectorModes = ['ambient', 'vivid', 'off'];
+    const savedMode = localStorage.getItem('lawrence_projector_mode') || 'ambient';
+    this.currentProjectorMode = savedMode;
+    this.applyProjectorMode(this.currentProjectorMode);
+
+    // Auto-play safety
+    const startPlay = () => {
+      video.play().catch(() => {
+        const resumeOnTouch = () => {
+          video.play();
+          window.removeEventListener('click', resumeOnTouch);
+          window.removeEventListener('keydown', resumeOnTouch);
+        };
+        window.addEventListener('click', resumeOnTouch);
+        window.addEventListener('keydown', resumeOnTouch);
+      });
+    };
+    startPlay();
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const nextIdx = (this.projectorModes.indexOf(this.currentProjectorMode) + 1) % this.projectorModes.length;
+        this.currentProjectorMode = this.projectorModes[nextIdx];
+        localStorage.setItem('lawrence_projector_mode', this.currentProjectorMode);
+        this.applyProjectorMode(this.currentProjectorMode);
+
+        if (window.soundEngine) {
+          window.soundEngine.playChirp(700, 1100, 0.07);
+        }
+      });
+    }
+
+    if (switchBtn) {
+      switchBtn.addEventListener('click', () => {
+        this.switchProjectorFeed();
+      });
+    }
+  }
+
+  applyProjectorMode(mode) {
+    const layer = document.getElementById('projectorLayer');
+    const toggleBtn = document.getElementById('projectorToggleBtn');
+    if (!layer) return;
+
+    layer.classList.remove('mode-vivid', 'mode-subtle', 'mode-off');
+
+    if (mode === 'vivid') {
+      layer.classList.add('mode-vivid');
+      if (toggleBtn) toggleBtn.innerHTML = '<span class="pulse-dot" style="background:var(--accent-amber);"></span> PROJ: VIVID';
+    } else if (mode === 'off') {
+      layer.classList.add('mode-off');
+      if (toggleBtn) toggleBtn.innerHTML = '<span style="color:var(--text-muted);">○</span> PROJ: OFF';
+    } else {
+      // ambient / standard
+      if (toggleBtn) toggleBtn.innerHTML = '<span class="pulse-dot" style="background:var(--accent-cyan);"></span> PROJ: ON';
+    }
+  }
+
+  switchProjectorFeed() {
+    const video = document.getElementById('bgVideoPlayer');
+    const switchLabel = document.getElementById('switchFeedLabel');
+    if (!video) return;
+
+    this.currentFeedIndex = (this.currentFeedIndex + 1) % this.projectorFeeds.length;
+    const newSrc = this.projectorFeeds[this.currentFeedIndex];
+
+    video.src = newSrc;
+    video.play().catch(() => {});
+
+    const labelText = `FEED: 0${this.currentFeedIndex + 1}`;
+    if (switchLabel) switchLabel.textContent = labelText;
+
+    this.showToast(`PROJECTION SOURCE UPDATED // ${labelText}`);
+
+    if (window.soundEngine) {
+      window.soundEngine.playChirp(520, 960, 0.08);
+    }
   }
 
   /* ========================================================================
@@ -611,6 +710,8 @@ class PortfolioApp {
           &nbsp;&nbsp;<strong>about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engineering background & biography<br>
           &nbsp;&nbsp;<strong>skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical core matrix & stack<br>
           &nbsp;&nbsp;<strong>projects</strong>&nbsp;&nbsp;&nbsp;List all registered production specs<br>
+          &nbsp;&nbsp;<strong>projector</strong>&nbsp;&nbsp;Toggle projected background video<br>
+          &nbsp;&nbsp;<strong>feed</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch video projection feed<br>
           &nbsp;&nbsp;<strong>contact</strong>&nbsp;&nbsp;&nbsp;&nbsp;Direct transmission coordinates<br>
           &nbsp;&nbsp;<strong>theme</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Dark / Light system mode<br>
           &nbsp;&nbsp;<strong>sfx</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Web Audio procedural sound<br>
@@ -662,6 +763,16 @@ class PortfolioApp {
       case 'sfx':
         document.getElementById('sfxToggleBtn')?.click();
         outLine.innerHTML = `SFX TOGGLED`;
+        break;
+
+      case 'projector':
+        document.getElementById('projectorToggleBtn')?.click();
+        outLine.innerHTML = `PROJECTOR MODE: ${this.currentProjectorMode.toUpperCase()}`;
+        break;
+
+      case 'feed':
+        this.switchProjectorFeed();
+        outLine.innerHTML = `PROJECTOR FEED SWITCHED TO 0${this.currentFeedIndex + 1}`;
         break;
 
       case 'clear':

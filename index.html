@@ -14,6 +14,19 @@
 </head>
 <body>
 
+  <!-- ========================================================================
+       PROJECTED SCREEN BACKGROUND SYSTEM
+       ======================================================================== -->
+  <div class="projector-background-layer" id="projectorLayer">
+    <video id="bgVideoPlayer" class="projector-video" autoplay loop muted playsinline preload="auto">
+      <source src="assets/videos/background-feed.mp4" type="video/mp4">
+      <source src="WIN_20261104_05_10_52_Pro.mp4" type="video/mp4">
+    </video>
+    <!-- Optical Projection Grid, Vignette, and Scanlines -->
+    <div class="projector-optical-overlay"></div>
+    <div class="projector-beam"></div>
+  </div>
+
   <!-- Background Technical Grid & Glow -->
   <div class="bg-grid-overlay"></div>
   <div class="bg-radial-gradient"></div>
@@ -52,6 +65,9 @@
 
     <div class="control-cluster">
       <div class="clock-display" id="liveClock">UTC+0 00:00:00</div>
+      <button class="control-btn" id="projectorToggleBtn" title="Toggle background screen projection">
+        <span class="pulse-dot" style="background:var(--accent-cyan);"></span> PROJ: ON
+      </button>
       <button class="control-btn" id="sfxToggleBtn" title="Toggle UI sound synthesis">
         <span style="color:var(--accent-cyan);">●</span> SFX: ON
       </button>
@@ -124,6 +140,10 @@
           <span>INITIATE CONTACT</span>
           <span>→</span>
         </a>
+        <button class="btn-secondary" id="switchFeedBtn" title="Switch video projection feed" data-cursor="FEED">
+          <span id="switchFeedLabel">FEED: 01</span>
+          <span>⇄</span>
+        </button>
         <button class="btn-secondary" id="resetStickersBtn" title="Reset sticker positions">
           <span>RESET BADGES</span>
           <span>↺</span>
