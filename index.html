@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWRENCE // Design Engineer & Systems Developer</title>
+  <meta name="description" content="Portfolio of Lawrence (@Lawrence-cell) — Low-level Systems Engineer & Creative Design Technologist. C++, GNU Radio, WebGL, and Tactile Interfaces.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⟡</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Background Technical Grid & Glow -->
+  <div class="bg-grid-overlay"></div>
+  <div class="bg-radial-gradient"></div>
+
+  <!-- Custom Contextual Cursor -->
+  <div class="custom-cursor" id="customCursor">
+    <div class="custom-cursor-dot"></div>
+    <span class="custom-cursor-label" id="cursorLabel">VIEW</span>
+  </div>
+
+  <!-- ========================================================================
+       TOP NAVIGATION & TELEMETRY BAR
+       ======================================================================== -->
+  <header class="top-bar">
+    <div class="brand-section">
+      <a href="#hero" class="brand-logo" data-cursor="HOME">
+        <span class="logo-mark"></span>
+        <span class="scramble-hover" data-scramble>LAWRENCE // SYS.V2.6</span>
+      </a>
+      <div class="telemetry-status">
+        <span class="pulse-dot"></span>
+        <span class="font-mono" style="font-size:11px;">SYS: ONLINE</span>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active" data-scramble>00 // INDEX</a></li>
+        <li><a href="#projects" class="nav-link" data-scramble>01 // PROJECTS</a></li>
+        <li><a href="#lab" class="nav-link" data-scramble>02 // LAB</a></li>
+        <li><a href="#dossier" class="nav-link" data-scramble>03 // SYSTEMS</a></li>
+        <li><a href="#about" class="nav-link" data-scramble>04 // ABOUT</a></li>
+        <li><a href="#contact" class="nav-link" data-scramble>05 // TRANSMIT</a></li>
+      </ul>
+    </nav>
+
+    <div class="control-cluster">
+      <div class="clock-display" id="liveClock">UTC+0 00:00:00</div>
+      <button class="control-btn" id="sfxToggleBtn" title="Toggle UI sound synthesis">
+        <span style="color:var(--accent-cyan);">●</span> SFX: ON
+      </button>
+      <button class="control-btn" id="themeToggleBtn" title="Toggle dark/light system mode">
+        <span class="pulse-dot"></span> DARK
+      </button>
+      <button class="mobile-nav-toggle" id="mobileNavToggle">MENU</button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION WITH 3D WEBGL ARTIFACT & PHYSICS STICKERS
+       ======================================================================== -->
+  <section class="hero-section" id="hero">
+    <!-- 3D Interactive Canvas Stage -->
+    <div class="hero-canvas-container" data-cursor="ORBIT 3D">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-canvas-hint font-mono">// DRAG TO ROTATE 3D ARTIFACT</div>
+    </div>
+
+    <!-- Draggable Physics Stickers (Haoqi inspired) -->
+    <div class="sticker-container" id="heroStickers">
+      <div class="interactive-sticker sticker-highlight" data-cursor="DRAG">
+        <span class="sticker-pin"></span>
+        <span>LAWRENCE // SYS.ENG</span>
+      </div>
+
+      <div class="interactive-sticker" data-cursor="DRAG">
+        <span class="sticker-pin" style="background:var(--accent-indigo);"></span>
+        <span>C++20 / GNU RADIO / RF</span>
+      </div>
+
+      <div class="interactive-sticker sticker-avatar" data-cursor="LAWRENCE">
+        <img src="assets/images/lawrence-avatar.png" alt="Lawrence avatar" />
+        <span style="padding:0 6px;">@Lawrence-cell</span>
+      </div>
+
+      <div class="interactive-sticker sticker-mono" data-cursor="DRAG">
+        <span>RETRO-FUTURIST UI</span>
+      </div>
+
+      <div class="interactive-sticker" data-cursor="DRAG">
+        <span class="pulse-dot"></span>
+        <span>AVAILABLE 2026</span>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>DESIGN ENGINEER & LOW-LEVEL SYSTEMS SPECIALIST</span>
+      </div>
+
+      <h1 class="hero-title">
+        ENGINEERING SYSTEMS.<br>
+        CRAFTING <span class="glow-word scramble-hover" data-scramble>TACTILE</span> SURFACES.
+      </h1>
+
+      <p class="hero-description">
+        Bridging bare-metal computing, digital signal processing (C++, DSP, RF), and retro-futuristic digital interfaces. Architecting software that values clarity, tactile feedback, and systems-level rigor.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary" data-cursor="EXPLORE">
+          <span>EXPLORE SPEC SHEET</span>
+          <span>↓</span>
+        </a>
+        <a href="#contact" class="btn-secondary" data-cursor="TRANSMIT">
+          <span>INITIATE CONTACT</span>
+          <span>→</span>
+        </a>
+        <button class="btn-secondary" id="resetStickersBtn" title="Reset sticker positions">
+          <span>RESET BADGES</span>
+          <span>↺</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Telemetry Footer -->
+    <div class="hero-telemetry-footer">
+      <div class="metric-group">
+        <div class="metric-item">
+          <span>LOC:</span>
+          <span class="val">ACCRA, GHANA</span>
+        </div>
+        <div class="metric-item">
+          <span>STACK:</span>
+          <span class="val">C++20 / DSP / WEBGL</span>
+        </div>
+        <div class="metric-item">
+          <span>GITHUB:</span>
+          <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="val" style="color:var(--accent-cyan); text-decoration:none;">@Lawrence-cell</a>
+        </div>
+      </div>
+      <div class="metric-item">
+        <span>STATUS:</span>
+        <span class="val" style="color:var(--accent-emerald);">OPEN FOR NEW COLLABORATIONS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PHILOSOPHY & MANIFESTO STRIP
+       ======================================================================== -->
+  <section class="manifesto-section">
+    <div class="manifesto-grid">
+      <div class="manifesto-label">
+        // 00 MANIFESTO & PRINCIPLES
+      </div>
+      <div class="manifesto-body">
+        “We build software at the intersection of <strong>low-level performance</strong> and <strong>sensory tactility</strong>. Systems shouldn't feel like sterile abstractions; they should provide the crisp weight of an instrument, the responsiveness of analog hardware, and the computational precision of modern physics.”
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PROJECT INDEX / DATASHEET (THE CORE SHOWCASE)
+       ======================================================================== -->
+  <section class="projects-section" id="projects">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <span class="sub">// 01 PRODUCTION ARCHIVE & SPEC SHEETS</span>
+        <h2 class="section-title">ENGINEERING CATALOG</h2>
+      </div>
+
+      <div class="view-controls">
+        <!-- Category Filters -->
+        <div class="filter-pills">
+          <button class="filter-btn active" data-filter="all">ALL (06)</button>
+          <button class="filter-btn" data-filter="systems">SYSTEMS & C++</button>
+          <button class="filter-btn" data-filter="signal">SIGNAL & RF</button>
+          <button class="filter-btn" data-filter="utilities">UTILITIES</button>
+          <button class="filter-btn" data-filter="web">WEB & GL</button>
+        </div>
+
+        <!-- View Switcher -->
+        <div class="view-toggle-group">
+          <button class="view-toggle-btn active" id="viewTableBtn" title="Datasheet Table View">
+            <span>≡</span> TABLE
+          </button>
+          <button class="view-toggle-btn" id="viewGridBtn" title="Specimen Card Grid View">
+            <span>☵</span> GRID
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Mode 1: Datasheet Table -->
+    <div class="datasheet-container" id="datasheetContainer">
+      <table class="datasheet-table">
+        <thead>
+          <tr>
+            <th>CODE</th>
+            <th>PROJECT TITLE</th>
+            <th>DOMAIN</th>
+            <th>CORE STACK</th>
+            <th>YEAR</th>
+            <th>STATUS</th>
+            <th style="text-align:right;">SPECIFICATION</th>
+          </tr>
+        </thead>
+        <tbody id="datasheetTableBody">
+          <!-- Dynamically populated by app.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- View Mode 2: Specimen Grid -->
+    <div class="specimen-grid" id="specimenGridContainer" style="display:none;">
+      <!-- Dynamically populated by app.js -->
+    </div>
+  </section>
+
+  <!-- Floating Cursor Hover Preview Card (Table View) -->
+  <div class="hover-preview-card" id="hoverPreviewCard">
+    <div class="hover-preview-media">
+      <canvas id="hoverPreviewCanvas"></canvas>
+    </div>
+    <div class="hover-preview-info">
+      <div class="hover-preview-title" id="hoverPreviewTitle">SYS-01: SpectrumVision</div>
+      <div class="hover-preview-desc" id="hoverPreviewDesc">High-speed RF signal acquisition and FFT spectrum waterfall analyzer.</div>
+      <span class="badge-telemetry active" style="font-size:9px;">CLICK FOR FULL DOSSIER</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       INTERACTIVE CREATIVE LAB (Interactive DSP & Shaders)
+       ======================================================================== -->
+  <section class="lab-section" id="lab">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <span class="sub">// 02 INTERACTIVE PLAYGROUND</span>
+        <h2 class="section-title">CREATIVE LAB EXPERIMENTS</h2>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        REAL-TIME RUNTIME // LIVE HARDWARE & ALGORITHMIC EMULATION
+      </div>
+    </div>
+
+    <div class="lab-grid">
+      <!-- Experiment 1: RF Spectrum Analyzer & Audio DSP -->
+      <div class="lab-card corner-frame">
+        <div class="lab-card-header">
+          <span>EXP-01 // RF & DSP OSCILLOSCOPE</span>
+          <span class="badge-telemetry active">WEB AUDIO SYNTH</span>
+        </div>
+        <div class="lab-stage">
+          <canvas id="spectrumCanvas"></canvas>
+        </div>
+        <div class="lab-controls">
+          <div class="control-row">
+            <span>WAVEFORM:</span>
+            <div class="button-chip-group">
+              <button class="chip-btn active" data-wave="sine">SINE</button>
+              <button class="chip-btn" data-wave="square">SQUARE</button>
+              <button class="chip-btn" data-wave="saw">SAW</button>
+              <button class="chip-btn" data-wave="noise">NOISE</button>
+            </div>
+          </div>
+          <div class="control-row">
+            <span>FREQUENCY: <span id="specFreqVal" class="text-cyan">440 Hz</span></span>
+            <input type="range" id="specFreq" min="80" max="1800" value="440" step="10">
+          </div>
+          <div class="control-row">
+            <span>HARMONICS: <span id="specHarmVal" class="text-cyan">3</span></span>
+            <input type="range" id="specHarm" min="1" max="8" value="3" step="1">
+          </div>
+          <div class="control-row" style="margin-top:4px;">
+            <button class="control-btn" id="toggleAudioBtn" style="width:100%; justify-content:center;">
+              AUDITION TONE
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiment 2: Optical Glass Refraction Shader -->
+      <div class="lab-card corner-frame">
+        <div class="lab-card-header">
+          <span>EXP-02 // OPTICAL REFRACTION SHADER</span>
+          <span class="badge-telemetry active">CHROMA DISPERSION</span>
+        </div>
+        <div class="lab-stage" style="cursor:crosshair;">
+          <canvas id="shaderCanvas"></canvas>
+        </div>
+        <div class="lab-controls">
+          <div class="control-row">
+            <span>REFRACTION INDEX (IOR): <span id="shaderIORVal" class="text-cyan">1.45</span></span>
+            <input type="range" id="shaderIOR" min="1.0" max="2.2" value="1.45" step="0.05">
+          </div>
+          <div class="control-row">
+            <span>CHROMATIC ABERRATION: <span id="shaderDispVal" class="text-cyan">8px</span></span>
+            <input type="range" id="shaderDisp" min="0" max="24" value="8" step="1">
+          </div>
+          <div class="control-row" style="margin-top:4px;">
+            <span style="font-size:10px; color:var(--text-muted);">// MOVE CURSOR OVER STAGE TO REFRACT SURFACE PATTERN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiment 3: Character Scramble Decoder Sandbox -->
+      <div class="lab-card corner-frame">
+        <div class="lab-card-header">
+          <span>EXP-03 // CYBER DECODER SANDBOX</span>
+          <span class="badge-telemetry active">TEXT GLYPH MATRIX</span>
+        </div>
+        <div class="lab-stage" style="flex-direction:column; padding:24px; text-align:center;">
+          <div class="font-mono text-cyan" id="scrambleOutput" style="font-size:18px; font-weight:700; min-height:48px; letter-spacing:0.08em;">
+            TACTILE RETRO-FUTURIST COMPUTING
+          </div>
+          <span class="font-mono" style="font-size:10px; color:var(--text-muted); margin-top:8px;">// PROCEDURAL GLYPH RESOLUTION ENGINE</span>
+        </div>
+        <div class="lab-controls">
+          <div class="control-row">
+            <input type="text" id="scrambleInput" value="LOW-LEVEL ARCHITECTURE // C++20" class="terminal-input" style="border:1px solid var(--border-subtle); padding:6px 10px; border-radius:var(--radius-sm); background:var(--bg-tertiary);" placeholder="Enter text to decode...">
+            <button class="chip-btn active" id="runScrambleBtn" style="padding:6px 12px;">DECODE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TECHNICAL DOSSIER & SYSTEMS ARCHITECTURE (SKILLS MATRIX)
+       ======================================================================== -->
+  <section class="dossier-section" id="dossier">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <span class="sub">// 03 CORE CAPABILITIES & STACK MATRIX</span>
+        <h2 class="section-title">SYSTEMS SPECIFICATIONS</h2>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        AUDITED HARDWARE & SOFTWARE PROFICIENCIES
+      </div>
+    </div>
+
+    <div class="dossier-grid">
+      <!-- Module 1: Systems & Architecture -->
+      <div class="dossier-module corner-frame">
+        <div class="dossier-module-header">
+          <span class="dossier-module-title">SYSTEMS & C++</span>
+          <span class="badge-telemetry">MOD-01</span>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Modern C++ (C++17 / C++20)</span>
+              <span class="val">96%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:96%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Multithreading & Lock-free Rings</span>
+              <span class="val">92%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Win32 API & Shell Subsystems</span>
+              <span class="val">88%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">POSIX Sockets & Memory Optimization</span>
+              <span class="val">90%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2: Signal Processing & RF -->
+      <div class="dossier-module corner-frame">
+        <div class="dossier-module-header">
+          <span class="dossier-module-title">SIGNAL & RF DSP</span>
+          <span class="badge-telemetry">MOD-02</span>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">GNU Radio & SDR Frameworks</span>
+              <span class="val">94%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:94%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">FFTW3 & Spectral Waterfall Processing</span>
+              <span class="val">90%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Symbol Timing Recovery (Gardner/M&M)</span>
+              <span class="val">88%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">I/Q Modulation & Constellation Analysis</span>
+              <span class="val">91%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:91%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3: Frontend & Creative Engineering -->
+      <div class="dossier-module corner-frame">
+        <div class="dossier-module-header">
+          <span class="dossier-module-title">CREATIVE FRONTEND</span>
+          <span class="badge-telemetry">MOD-03</span>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">WebGL / Three.js / Canvas 2D</span>
+              <span class="val">92%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Modern JavaScript ES6+ & TypeScript</span>
+              <span class="val">95%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Web Audio API Synthesis</span>
+              <span class="val">86%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:86%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Design Systems & Precision Layouts</span>
+              <span class="val">94%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:94%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4: Infrastructure & Automation -->
+      <div class="dossier-module corner-frame">
+        <div class="dossier-module-header">
+          <span class="dossier-module-title">INFRA & UTILITIES</span>
+          <span class="badge-telemetry">MOD-04</span>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">CMake & Toolchain Orchestration</span>
+              <span class="val">89%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:89%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Python AsyncIO & ZeroMQ</span>
+              <span class="val">92%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Git Version Control & CI/CD</span>
+              <span class="val">96%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:96%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label-group">
+              <span class="name">Linux Environment & Shell Scripting</span>
+              <span class="val">93%</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:93%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ABOUT & PERSONA SECTION
+       ======================================================================== -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <!-- Holographic Identity Card -->
+      <div class="id-card-frame corner-frame" data-cursor="LAWRENCE">
+        <div class="id-card-header">
+          <span>IDENTITY CARD // SYS-ID: #8491</span>
+          <span class="badge-telemetry active">VERIFIED</span>
+        </div>
+        <div class="id-card-photo-wrap">
+          <img src="assets/images/lawrence-avatar.png" alt="Lawrence Portrait" />
+        </div>
+        <div class="id-card-meta">
+          <div class="id-card-row">
+            <span class="k">OPERATOR:</span>
+            <span class="v">LAWRENCE</span>
+          </div>
+          <div class="id-card-row">
+            <span class="k">ROLE:</span>
+            <span class="v">SYSTEMS & DESIGN ENGINEER</span>
+          </div>
+          <div class="id-card-row">
+            <span class="k">HANDLE:</span>
+            <span class="v">@Lawrence-cell</span>
+          </div>
+          <div class="id-card-row">
+            <span class="k">BASE:</span>
+            <span class="v">ACCRA, GHANA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative -->
+      <div class="about-narrative">
+        <div class="hero-eyebrow">
+          <span class="line"></span>
+          <span>BACKGROUND & DISCIPLINE</span>
+        </div>
+        <h2>THINKING IN SYSTEMS.<br>BUILDING WITH RIGOR.</h2>
+        <p>
+          I am a <strong>systems engineer and creative technologist</strong> driven by the desire to make software feel physically tangible, blisteringly fast, and aesthetically uncompromised.
+        </p>
+        <p>
+          My work spans the spectrum from bare-metal C++ systems, high-speed radio frequency analysis, and digital signal processing (FFT, symbol synchronization in GNU Radio), to tactile modern web engineering using WebGL, shaders, and custom UI audio synthesis.
+        </p>
+        <p>
+          Inspired by the high-craft design engineering of interfaces like <em>haoqi.design</em> and industrial computing hardware, I believe the best engineering happens when technical excellence and sensory design work together without friction.
+        </p>
+
+        <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
+          <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="btn-primary" data-cursor="GITHUB">
+            <span>GITHUB PROFILE</span>
+            <span>↗</span>
+          </a>
+          <a href="#contact" class="btn-secondary" data-cursor="TRANSMIT">
+            <span>SEND TRANSMISSION</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TRANSMISSION TERMINAL & CONTACT FOOTER
+       ======================================================================== -->
+  <section class="terminal-section" id="contact">
+    <div class="section-header" style="max-width:960px; margin:0 auto 36px auto;">
+      <div class="section-title-wrap">
+        <span class="sub">// 04 TELECOMMUNICATION CONSOLE</span>
+        <h2 class="section-title">COMMAND & TRANSMISSION</h2>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        STATUS: ACCEPTING TRANSMISSIONS
+      </div>
+    </div>
+
+    <!-- Embedded Retro Terminal -->
+    <div class="terminal-container corner-frame">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot close"></div>
+          <div class="terminal-dot minimize"></div>
+          <div class="terminal-dot maximize"></div>
+        </div>
+        <div class="terminal-title">LAWRENCE_TELEMETRY_SHELL_v2.6.sh</div>
+        <div class="font-mono" style="font-size:10px; color:var(--text-muted);">HOST: SYS.ONLINE</div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-line out-dim">// LAWRENCE DEV TRANSMISSION SYSTEM [v2.6]</div>
+        <div class="terminal-line out-cyan">// Type 'help' to review diagnostic commands, or 'contact' for transmission data.</div>
+      </div>
+      <div style="padding:10px 16px; background:var(--bg-tertiary); border-top:1px solid var(--border-subtle);">
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">lawrence@sys:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input" placeholder="type 'help', 'skills', 'projects', 'contact'..." autofocus />
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Action Contact Cards -->
+    <div class="contact-grid">
+      <a href="mailto:lheklah@st.ug.edu.gh" class="contact-card" id="copyEmailBtn" data-cursor="COPY">
+        <div class="contact-card-info">
+          <span class="label">DIRECT EMAIL</span>
+          <span class="val">lheklah@st.ug.edu.gh</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[COPY]</span>
+      </a>
+
+      <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">GITHUB PROFILE</span>
+          <span class="val">github.com/Lawrence-cell</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">LINKEDIN NETWORK</span>
+          <span class="val">Lawrence // Engineer</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+    </div>
+
+    <!-- Bottom Telemetry Footer -->
+    <div class="footer-bottom">
+      <div>
+        <span>LAWRENCE // PORTFOLIO [SYS.V2.6]</span>
+        <span style="margin:0 8px;">—</span>
+        <span>INSPIRED BY HAOQI.DESIGN</span>
+      </div>
+      <div>
+        <span>ENCRYPTION: TLS 1.3</span>
+        <span style="margin:0 8px;">//</span>
+        <span>LATENCY: 14MS</span>
+      </div>
+      <div>
+        <span>ALL SYSTEMS NOMINAL © 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PROJECT DOSSIER SLIDING DRAWER MODAL
+       ======================================================================== -->
+  <div class="dossier-modal-backdrop" id="dossierModal">
+    <div class="dossier-drawer">
+      <div class="drawer-header">
+        <div>
+          <span class="font-mono text-cyan" id="drawerCode" style="font-size:11px; font-weight:700;">SYS-01</span>
+          <h3 id="drawerTitle" style="font-size:1.3rem; margin-top:2px;">SpectrumVision RF Analyzer</h3>
+        </div>
+        <button class="drawer-close-btn" id="drawerCloseBtn">
+          <span>CLOSE</span>
+          <span>✕</span>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <div class="drawer-hero-media">
+          <canvas id="drawerCanvas"></canvas>
+        </div>
+
+        <div>
+          <span class="drawer-section-title">// SYSTEM SPECIFICATION & OVERVIEW</span>
+          <p class="drawer-desc" id="drawerSummary"></p>
+        </div>
+
+        <div class="drawer-spec-grid">
+          <div class="drawer-spec-item">
+            <div class="k">FIELD / DOMAIN:</div>
+            <div class="v" id="drawerDomain">Radio Frequency / SDR</div>
+          </div>
+          <div class="drawer-spec-item">
+            <div class="k">RELEASE YEAR:</div>
+            <div class="v" id="drawerYear">2026</div>
+          </div>
+          <div class="drawer-spec-item">
+            <div class="k">DEPLOYMENT STATUS:</div>
+            <div class="v text-emerald" id="drawerStatus">Production</div>
+          </div>
+          <div class="drawer-spec-item">
+            <div class="k">BENCHMARK:</div>
+            <div class="v" id="drawerMetrics">40 MSPS @ &lt; 4% frame loss</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="drawer-section-title">// KEY ARCHITECTURAL FEATURES</span>
+          <ul class="drawer-features" id="drawerFeatures">
+            <!-- Populated dynamically -->
+          </ul>
+        </div>
+
+        <div>
+          <span class="drawer-section-title">// SYSTEM ARCHITECTURE</span>
+          <p class="drawer-desc" id="drawerArchitecture"></p>
+        </div>
+
+        <div>
+          <span class="drawer-section-title">// TECHNICAL STACK</span>
+          <div id="drawerStack" style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;"></div>
+        </div>
+
+        <div style="padding-top:16px; border-top:1px solid var(--border-subtle); display:flex; gap:12px;">
+          <a href="#" target="_blank" rel="noopener" class="btn-primary" id="drawerGithub" style="flex:1; justify-content:center;">
+            <span>VIEW SOURCE ON GITHUB</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="pulse-dot"></span>
+    <span id="toastMsg">ACTION CONFIRMED</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/scramble.js"></script>
+  <script src="js/webgl-hero.js"></script>
+  <script src="js/stickers.js"></script>
+  <script src="js/lab.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

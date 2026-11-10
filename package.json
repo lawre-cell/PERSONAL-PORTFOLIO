@@ -1,0 +1,29 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Lawrence Personal Portfolio — Design Engineering & Systems Architecture inspired by haoqi.design",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawre-cell/PERSONAL-PORTFOLIO.git"
+  },
+  "keywords": [
+    "portfolio",
+    "systems-engineer",
+    "design-engineer",
+    "cpp",
+    "dsp",
+    "webgl",
+    "retro-futurism"
+  ],
+  "author": "Lawrence (@Lawrence-cell)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lawre-cell/PERSONAL-PORTFOLIO/issues"
+  },
+  "homepage": "https://github.com/lawre-cell/PERSONAL-PORTFOLIO#readme"
+}
