@@ -137,6 +137,7 @@ class PortfolioApp {
     this.initTheme();
     this.initProjector();
     this.initAudioToggle();
+    this.initBackgroundMusic();
     this.initCustomCursor();
     this.initViewToggles();
     this.initFilters();
@@ -318,6 +319,33 @@ class PortfolioApp {
       const enabled = window.soundEngine.toggle();
       updateLabel(enabled);
     });
+  }
+
+  /* ========================================================================
+     3.5. BACKGROUND INSTRUMENTAL MUSIC (AUTOMATIC PLAYBACK AT MAX LOUDNESS)
+     ======================================================================== */
+  initBackgroundMusic() {
+    const audio = document.getElementById('bgMusicPlayer');
+    const visualizer = document.getElementById('bgmVisualizer');
+    const btnLabel = document.getElementById('bgmBtnLabel');
+    if (!audio) return;
+
+    // Initialize Web Audio graph for maximum loudness
+    window.soundEngine.initBgm(audio);
+
+    const updateUI = () => {
+      const isPlaying = window.soundEngine.isBgmPlaying();
+      if (isPlaying) {
+        if (visualizer) visualizer.classList.remove('paused');
+        if (btnLabel) btnLabel.textContent = 'AUDIO: LIVE [100%]';
+      }
+    };
+
+    audio.addEventListener('play', updateUI);
+    audio.addEventListener('playing', updateUI);
+
+    // Initial check
+    setInterval(updateUI, 400);
   }
 
   /* ========================================================================
@@ -710,6 +738,8 @@ class PortfolioApp {
           &nbsp;&nbsp;<strong>about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engineering background & biography<br>
           &nbsp;&nbsp;<strong>skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical core matrix & stack<br>
           &nbsp;&nbsp;<strong>projects</strong>&nbsp;&nbsp;&nbsp;List all registered production specs<br>
+          &nbsp;&nbsp;<strong>music</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle background instrumental music<br>
+          &nbsp;&nbsp;<strong>boost</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximize BGM loudness & dynamic gain<br>
           &nbsp;&nbsp;<strong>projector</strong>&nbsp;&nbsp;Toggle projected background video<br>
           &nbsp;&nbsp;<strong>feed</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch video projection feed<br>
           &nbsp;&nbsp;<strong>contact</strong>&nbsp;&nbsp;&nbsp;&nbsp;Direct transmission coordinates<br>
@@ -763,6 +793,19 @@ class PortfolioApp {
       case 'sfx':
         document.getElementById('sfxToggleBtn')?.click();
         outLine.innerHTML = `SFX TOGGLED`;
+        break;
+
+      case 'bgm':
+      case 'music':
+        document.getElementById('bgmToggleBtn')?.click();
+        outLine.innerHTML = `BGM: ${window.soundEngine.isBgmPlaying() ? 'PLAYING AT MAXIMUM VOLUME' : 'PAUSED'}`;
+        break;
+
+      case 'boost':
+      case 'loud':
+        window.soundEngine.setBgmVolume(1.0);
+        window.soundEngine.playBgm().catch(() => {});
+        outLine.innerHTML = `BGM BOOST: 180% AMPLIFICATION WITH DYNAMICS COMPRESSION ACTIVE`;
         break;
 
       case 'projector':

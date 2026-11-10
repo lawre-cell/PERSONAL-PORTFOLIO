@@ -45,10 +45,15 @@ A bespoke, high-performance portfolio tailored for **Lawrence** ([@Lawrence-cell
 - **EXP-02: Optical Refraction Shader**: Interactive refraction canvas testing index of refraction (IOR) and chromatic aberration across test patterns.
 - **EXP-03: Cyber Glyph Matrix Decoder**: Type custom text and watch characters resolve through a procedural scramble decoding animation.
 
-### 5. Web Audio API Procedural Sound Synthesis
-- Zero external MP3/WAV files required.
-- Synthesizes mechanical tactile clicks, frequency chirps, and decode ticks directly via `AudioContext` oscillators.
-- User-controllable `SFX: ON / OFF` toggle with state persistence.
+### 5. Background Instrumental Music & Sound Engine
+- **Full-Blast Background Instrumentals**:
+  - Automatically loops `instrumentals.mp3` as the site's background soundtrack.
+  - **Maximum Loudness Processing**: Boosted via a Web Audio `GainNode` and `DynamicsCompressorNode` for punchy, high-output sound without digital clipping.
+  - **Browser Autoplay Handling**: Automatically starts immediately or seamlessly unblocks on the visitor's first gesture (click, scroll, key).
+  - **Equalizer Visualizer Pill**: Animated bouncing audio spectrum bars in the top bar with one-click `[BGM: MAX]` / `[BGM: OFF]` toggle.
+- **Procedural Sound FX**:
+  - Synthesizes mechanical tactile clicks, frequency chirps, and decode ticks directly via `AudioContext` oscillators.
+  - User-controllable `SFX: ON / OFF` toggle with state persistence.
 
 ### 6. Interactive Command Terminal
 - Embedded retro terminal console supporting interactive commands:

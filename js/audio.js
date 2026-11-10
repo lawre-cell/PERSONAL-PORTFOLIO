@@ -145,6 +145,96 @@ class SoundEngine {
     osc.start(now);
     osc.stop(now + 0.08);
   }
+
+  /* ========================================================================
+     BACKGROUND MUSIC (MAX VOLUME & DYNAMICS COMPRESSION BOOST)
+     ======================================================================== */
+  initBgm(audioElement) {
+    if (!audioElement) return;
+    this.bgmAudio = audioElement;
+    this.bgmAudio.volume = 1.0; // Max volume for HTML5 audio element
+    this.bgmAudio.loop = true;
+
+    this.init();
+    if (this.ctx && !this.bgmSourceNode) {
+      try {
+        this.bgmSourceNode = this.ctx.createMediaElementSource(audioElement);
+        this.bgmGainNode = this.ctx.createGain();
+        // Set gain to 1.8 (180% amplification boost for maximum loudness)
+        this.bgmGainNode.gain.setValueAtTime(1.8, this.ctx.currentTime);
+
+        // Dynamics Compressor to maximize loudness and punch without clipping
+        this.compressor = this.ctx.createDynamicsCompressor();
+        this.compressor.threshold.setValueAtTime(-10, this.ctx.currentTime);
+        this.compressor.knee.setValueAtTime(12, this.ctx.currentTime);
+        this.compressor.ratio.setValueAtTime(8, this.ctx.currentTime);
+        this.compressor.attack.setValueAtTime(0.003, this.ctx.currentTime);
+        this.compressor.release.setValueAtTime(0.2, this.ctx.currentTime);
+
+        this.bgmSourceNode.connect(this.bgmGainNode);
+        this.bgmGainNode.connect(this.compressor);
+        this.compressor.connect(this.ctx.destination);
+      } catch (err) {
+        console.warn('Web Audio gain routing notice:', err);
+      }
+    }
+
+    // Force play immediately without waiting for permission
+    const forceStart = () => {
+      this.playBgm().catch(() => {});
+    };
+    forceStart();
+
+    // Trigger on any micro-gesture across the viewport
+    const omniEvents = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'scroll', 'touchstart', 'keydown', 'mouseenter', 'focus'];
+    const onGesture = () => {
+      forceStart();
+      if (this.isBgmPlaying()) {
+        omniEvents.forEach(e => window.removeEventListener(e, onGesture, true));
+      }
+    };
+    omniEvents.forEach(e => window.addEventListener(e, onGesture, { capture: true, passive: true }));
+
+    // Continuous auto-retry every 250ms until playing
+    const retryInterval = setInterval(() => {
+      if (this.isBgmPlaying()) {
+        clearInterval(retryInterval);
+      } else {
+        forceStart();
+      }
+    }, 250);
+  }
+
+  playBgm() {
+    this.init();
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+    if (this.bgmAudio) {
+      this.bgmAudio.volume = 1.0;
+      return this.bgmAudio.play();
+    }
+    return Promise.reject();
+  }
+
+  pauseBgm() {
+    if (this.bgmAudio) {
+      this.bgmAudio.pause();
+    }
+  }
+
+  isBgmPlaying() {
+    return this.bgmAudio && !this.bgmAudio.paused && !this.bgmAudio.ended;
+  }
+
+  setBgmVolume(val = 1.0) {
+    if (this.bgmAudio) {
+      this.bgmAudio.volume = Math.max(0, Math.min(1.0, val));
+    }
+    if (this.bgmGainNode && this.ctx) {
+      this.bgmGainNode.gain.setValueAtTime(val * 1.8, this.ctx.currentTime);
+    }
+  }
 }
 
 window.soundEngine = new SoundEngine();

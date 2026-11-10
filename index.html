@@ -27,6 +27,32 @@
     <div class="projector-beam"></div>
   </div>
 
+  <!-- Background Instrumental Music (Autoplay Immediately at Max Loudness) -->
+  <audio id="bgMusicPlayer" autoplay loop preload="auto">
+    <source src="assets/audio/instrumentals.mp3" type="audio/mpeg">
+    <source src="instrumentals.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgMusicPlayer');
+      if (!audio) return;
+      audio.volume = 1.0;
+      const start = () => {
+        audio.volume = 1.0;
+        audio.play().catch(() => {});
+      };
+      start();
+      const omniEvents = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'scroll', 'touchstart', 'keydown', 'mouseenter', 'focus'];
+      const onUserMotion = () => {
+        start();
+        if (!audio.paused) {
+          omniEvents.forEach(e => window.removeEventListener(e, onUserMotion, true));
+        }
+      };
+      omniEvents.forEach(e => window.addEventListener(e, onUserMotion, { capture: true, passive: true }));
+    })();
+  </script>
+
   <!-- Background Technical Grid & Glow -->
   <div class="bg-grid-overlay"></div>
   <div class="bg-radial-gradient"></div>
@@ -65,6 +91,15 @@
 
     <div class="control-cluster">
       <div class="clock-display" id="liveClock">UTC+0 00:00:00</div>
+      <div class="badge-telemetry active" id="bgmTelemetryBadge" title="Instrumentals Autoplaying at Maximum Volume" style="cursor:default;">
+        <span class="bgm-eq-visualizer" id="bgmVisualizer">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </span>
+        <span id="bgmBtnLabel">AUDIO: LIVE [100%]</span>
+      </div>
       <button class="control-btn" id="projectorToggleBtn" title="Toggle background screen projection">
         <span class="pulse-dot" style="background:var(--accent-cyan);"></span> PROJ: ON
       </button>
@@ -112,6 +147,11 @@
       <div class="interactive-sticker" data-cursor="DRAG">
         <span class="pulse-dot"></span>
         <span>AVAILABLE 2026</span>
+      </div>
+
+      <div class="interactive-sticker sticker-highlight" id="musicSticker" data-cursor="BGM">
+        <span class="sticker-pin" style="background:#10b981;"></span>
+        <span>♫ INSTRUMENTALS // MAX VOL</span>
       </div>
     </div>
 

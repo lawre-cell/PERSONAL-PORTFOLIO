@@ -525,6 +525,40 @@ h1, h2, h3, h4 {
   background: rgba(0, 240, 255, 0.06);
 }
 
+/* Audio Equalizer Visualizer */
+.bgm-eq-visualizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 11px;
+  margin-right: 4px;
+}
+
+.bgm-eq-visualizer .eq-bar {
+  width: 2px;
+  height: 100%;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+  animation: eqBounce 0.65s ease-in-out infinite alternate;
+}
+
+.bgm-eq-visualizer .eq-bar:nth-child(1) { animation-duration: 0.55s; height: 40%; }
+.bgm-eq-visualizer .eq-bar:nth-child(2) { animation-duration: 0.38s; height: 95%; }
+.bgm-eq-visualizer .eq-bar:nth-child(3) { animation-duration: 0.62s; height: 60%; }
+.bgm-eq-visualizer .eq-bar:nth-child(4) { animation-duration: 0.44s; height: 100%; }
+
+.bgm-eq-visualizer.paused .eq-bar {
+  animation: none !important;
+  height: 3px !important;
+  opacity: 0.4;
+}
+
+@keyframes eqBounce {
+  0% { height: 25%; }
+  50% { height: 100%; }
+  100% { height: 35%; }
+}
+
 .clock-display {
   font-family: var(--font-mono);
   font-size: 11px;
