@@ -1,10 +1,6 @@
 # LAWRENCE // DESIGN ENGINEER & SYSTEMS PORTFOLIO
-
 > Inspired by the craft, retro-futurist aesthetics, and interactive systems of [haoqi.design](https://haoqi.design/).
-
 A bespoke, high-performance portfolio tailored for **Lawrence** ([@Lawrence-cell](https://github.com/Lawrence-cell)), celebrating the intersection of **low-level systems engineering (C++, DSP, GNU Radio)** and **tactile creative computing (WebGL, procedural sound, physics badges)**.
-
----
 
 ## ✦ Key Design & Engineering Features
 
