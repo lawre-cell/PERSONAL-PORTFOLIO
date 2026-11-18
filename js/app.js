@@ -100,6 +100,7 @@ class PortfolioApp {
     this.initTerminal();
     this.initContactActions();
     this.initMobileNav();
+    this.initTabNavigation();
   }
 
   /* ========================================================================
@@ -688,9 +689,11 @@ class PortfolioApp {
         outLine.className += ' out-cyan';
         outLine.innerHTML = `
           AVAILABLE COMMANDS:<br>
-          &nbsp;&nbsp;<strong>about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engineering background & biography<br>
-          &nbsp;&nbsp;<strong>skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical core matrix & stack<br>
-          &nbsp;&nbsp;<strong>projects</strong>&nbsp;&nbsp;&nbsp;List all registered production specs<br>
+          &nbsp;&nbsp;<strong>about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identity, biography & education<br>
+          &nbsp;&nbsp;<strong>projects</strong>&nbsp;&nbsp;&nbsp;List registered engineering builds<br>
+          &nbsp;&nbsp;<strong>team</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collective mission & team roster<br>
+          &nbsp;&nbsp;<strong>art</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poetry anthology & visual gallery<br>
+          &nbsp;&nbsp;<strong>skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical core matrix & disciplines<br>
           &nbsp;&nbsp;<strong>music</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle background instrumental music<br>
           &nbsp;&nbsp;<strong>boost</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximize BGM loudness & dynamic gain<br>
           &nbsp;&nbsp;<strong>projector</strong>&nbsp;&nbsp;Toggle projected background video<br>
@@ -706,7 +709,7 @@ class PortfolioApp {
         outLine.className += ' out-dim';
         outLine.innerHTML = `
           LAWRENCE // ABOUT<br>
-          [ Ready for your personal biography and background. ]
+          [ Ready for your personal biography, education, and disciplines. ]
         `;
         break;
 
@@ -714,7 +717,7 @@ class PortfolioApp {
         outLine.className += ' out-green';
         outLine.innerHTML = `
           SKILLS & CAPABILITIES<br>
-          [ Ready for your technical skills, stack, and focus areas. ]
+          Three Pillars: Data Science • Software Systems • Poetics & Literature
         `;
         break;
 
@@ -723,6 +726,26 @@ class PortfolioApp {
         outLine.innerHTML = PROJECTS_DATA.map(p => 
           `[${p.code}] ${p.title} (${p.year}) - ${p.statusLabel}`
         ).join('<br>');
+        break;
+
+      case 'team':
+        outLine.className += ' out-cyan';
+        outLine.innerHTML = `
+          TEAM // COLLECTIVE<br>
+          LEAD        : LAWRENCE (Data Science • Software • Poetry)<br>
+          ROSTER      : Core Engineering, Research & Creative Collaborators<br>
+          STATUS      : Open for Research & Cross-Disciplinary Partnerships
+        `;
+        break;
+
+      case 'art':
+      case 'poetry':
+        outLine.className += ' out-cyan';
+        outLine.innerHTML = `
+          ART // POETICS & VISUAL ANTHOLOGY<br>
+          DISCIPLINES : Poetry, Verse Stanzas, Photography & Digital Exhibits<br>
+          THEMES      : Rhythmic Expression, Philosophy & Computational Mind
+        `;
         break;
 
       case 'contact':
@@ -838,6 +861,48 @@ class PortfolioApp {
       navLinks.style.padding = '16px 24px';
       navLinks.style.borderBottom = '1px solid var(--border-medium)';
     });
+  }
+
+  /* ========================================================================
+     13. TAB NAVIGATION CONTROLLER (BALANCED MULTI-SESSION OBSERVER)
+     ======================================================================== */
+  initTabNavigation() {
+    const navLinks = document.querySelectorAll('.nav-links .nav-link');
+    const sections = ['about', 'projects', 'team', 'art'].map(id => document.getElementById(id)).filter(Boolean);
+
+    // Click handler for top nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.soundEngine) window.soundEngine.playClick();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // IntersectionObserver to highlight top tab based on current session in viewport
+    if ('IntersectionObserver' in window && sections.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              const href = link.getAttribute('href');
+              if (href === `#${id}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(sec => observer.observe(sec));
+    }
   }
 }
 

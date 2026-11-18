@@ -2472,6 +2472,251 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   HERO 4-TAB SESSION SELECTOR (BALANCED ARCHITECTURE)
+   ========================================================================== */
+
+.hero-session-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 28px;
+}
+
+.session-tab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.session-tab-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent-cyan);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.session-tab-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 240, 255, 0.12);
+}
+
+.session-tab-card:hover::before {
+  opacity: 1;
+}
+
+.session-tab-card .tab-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-cyan);
+  letter-spacing: 0.1em;
+}
+
+.session-tab-card .tab-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.session-tab-card .tab-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   MULTI-SESSION ARCHITECTURE (ABOUT, PROJECTS, TEAM, ART EQUAL DEPTH)
+   ========================================================================== */
+
+.session-subgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 32px auto 0 auto;
+}
+
+.session-subcard {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all var(--transition-fast);
+}
+
+.session-subcard:hover {
+  border-color: var(--border-medium);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.session-subcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+}
+
+.session-subcard-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.discipline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.discipline-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.discipline-pill.active {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.06);
+}
+
+/* Team Mission Banner */
+.team-mission-banner {
+  max-width: 1280px;
+  margin: 0 auto 36px auto;
+  padding: 32px 36px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+}
+
+.team-mission-banner h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.team-mission-banner p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Art & Poetic Showcase */
+.art-statement-banner {
+  max-width: 1280px;
+  margin: 0 auto 36px auto;
+  padding: 32px 36px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-magenta);
+  border-radius: var(--radius-md);
+}
+
+.art-statement-banner h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.art-statement-banner p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Audio / Spoken Word Player */
+.audio-player-widget {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.audio-player-waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-grow: 1;
+  height: 24px;
+}
+
+.audio-player-waveform span {
+  flex: 1;
+  background: var(--border-medium);
+  border-radius: 2px;
+  height: 30%;
+  transition: height 0.2s ease;
+}
+
+.audio-player-widget:hover .audio-player-waveform span:nth-child(odd) {
+  height: 80%;
+  background: var(--accent-cyan);
+}
+
+.audio-player-widget:hover .audio-player-waveform span:nth-child(even) {
+  height: 50%;
+  background: var(--accent-magenta);
+}
+
+/* Active navigation link styling */
+.nav-link.active {
+  color: var(--accent-cyan);
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan-glow);
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 
