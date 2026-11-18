@@ -1,88 +1,33 @@
-# LAWRENCE // DESIGN ENGINEER & SYSTEMS PORTFOLIO
-> Inspired by the craft, retro-futurist aesthetics, and interactive systems of [haoqi.design](https://haoqi.design/).
-A bespoke, high-performance portfolio tailored for **Lawrence** ([@Lawrence-cell](https://github.com/Lawrence-cell)), celebrating the intersection of **low-level systems engineering (C++, DSP, GNU Radio)** and **tactile creative computing (WebGL, procedural sound, physics badges)**.
+# LAWRENCE // PORTFOLIO
 
-## ✦ Key Design & Engineering Features
+> Built in the retro-futurist aesthetic of [haoqi.design](https://haoqi.design/) — featuring an interactive 3D WebGL crystal artifact, ambient screen video projection, and procedural Web Audio instrumentals.
 
-### 1. Retro-Futurist Studio Notebook & Datasheet Aesthetic
-- **Projected Screen Video Background**:
-  - Full-screen ambient video projection layer integrated seamlessly behind all content and 3D glass artifacts.
-  - Optical beam vignette, CRT phosphor scanlines, and theme-adaptive color grading.
-  - Interactive controls: `[PROJ: ON / VIVID / OFF]` and `[FEED: 01 / 02]` toggle to switch between video recordings.
-- **Dual Visual Modes**:
-  - **Dark Mode (Default)**: Deep obsidian abyss, glowing cyan/indigo telemetry lights, frosted acrylic refraction.
-  - **Light Mode**: High-precision clinical silver-grey parchment with electric ultramarine accents.
-- **Hairline Telemetry & Grid**:
-  - Live UTC/Local clock with second counter (`ACCRA / UTC+0 00:00:00`).
-  - Active status beacon (`SYS: ONLINE // OPEN FOR NEW COLLABORATIONS`).
-  - Optical corner marks (`+`) and technical coordinate badges.
+Clean, high-performance portfolio structure with pre-written prose removed and clean placeholders ready for Lawrence to fill with his own words, projects, team members, and art pieces.
 
-### 2. Interactive Hybrid Canvas Stage & Physics Badges
-- **3D Translucent Glass Polyhedron**:
-  - Interactive 3D artifact with dynamic mouse tracking, inertia lerp, and refractive facet shading.
-  - Chromatic dispersion (red/cyan RGB split on outer wireframe edges).
-  - Ambient particle constellation and Star-6 optical flares.
-- **Draggable Physics Stickers**:
-  - Tactile interactive badges that can be freely dragged, tossed, and dropped across the hero viewport.
-  - Procedural sound feedback on grab and drop.
-  - Double-click or reset button to snap back to default layout.
+---
 
-### 3. Dual-Mode Project Showcase
-- **View A: Datasheet Table**:
-  - Dense engineering specification rows with Code (`SYS-01`, `DSP-02`), Title, Domain, Tech Stack, Year, and Deployment Status.
-  - **Floating Cursor Preview**: Moving the mouse over table rows reveals a floating glass preview card that follows the pointer.
-- **View B: Specimen Card Grid**:
-  - High-craft cards with real-time animated technical schematic canvases.
-- **Category Filtering**: `ALL`, `SYSTEMS & C++`, `SIGNAL & RF`, `UTILITIES`, `WEB & GL`.
-- **Sliding Dossier Drawer**: Deep-dive engineering drawer with system specifications, architectural blueprints, benchmarks, and direct GitHub links.
+## ✦ Core Navigation Tabs
+- **ABOUT** (`#about`): Profile card, avatar photo frame, and bio placeholders.
+- **PROJECTS** (`#projects`): Dual-mode datasheet table & specimen grid with clean project templates.
+- **TEAM** (`#team`): Roster cards with avatar slots, roles, and bio placeholders for team members and collaborators.
+- **ART** (`#art`): Creative exhibition cards for poetry, verses, photography, and creative computing.
 
-### 4. Interactive Creative Lab (Live Micro-Experiments)
-- **EXP-01: RF & Audio DSP Oscilloscope**: Real-time waveform generator (Sine, Square, Sawtooth, Noise), frequency slider (80Hz - 1800Hz), harmonic tuning, and live Web Audio audition tone.
-- **EXP-02: Optical Refraction Shader**: Interactive refraction canvas testing index of refraction (IOR) and chromatic aberration across test patterns.
-- **EXP-03: Cyber Glyph Matrix Decoder**: Type custom text and watch characters resolve through a procedural scramble decoding animation.
+---
 
-### 5. Background Instrumental Music & Sound Engine
-- **Full-Blast Background Instrumentals**:
-  - Automatically loops `instrumentals.mp3` as the site's background soundtrack.
-  - **Maximum Loudness Processing**: Boosted via a Web Audio `GainNode` and `DynamicsCompressorNode` for punchy, high-output sound without digital clipping.
-  - **Browser Autoplay Handling**: Automatically starts immediately or seamlessly unblocks on the visitor's first gesture (click, scroll, key).
-  - **Equalizer Visualizer Pill**: Animated bouncing audio spectrum bars in the top bar with one-click `[BGM: MAX]` / `[BGM: OFF]` toggle.
-- **Procedural Sound FX**:
-  - Synthesizes mechanical tactile clicks, frequency chirps, and decode ticks directly via `AudioContext` oscillators.
-  - User-controllable `SFX: ON / OFF` toggle with state persistence.
-
-### 6. Interactive Command Terminal
-- Embedded retro terminal console supporting interactive commands:
-  - `help`: View available commands
-  - `about`: Operator background & biography
-  - `skills`: Audited technical proficiencies
-  - `projects`: Registered production specs
-  - `contact`: Transmission coordinates
-  - `theme`: Toggle dark/light system mode
-  - `clear`: Flush terminal buffer
+## ✦ Built-in Interactive Systems
+- **Projected Screen Video Background**: Full-screen video projection with optical scanlines, vignette grading, and multi-feed controls.
+- **Background Instrumental Music**: High-output Web Audio playback (`instrumentals.mp3`) with dynamic compression and automatic play on launch.
+- **3D Translucent Glass Polyhedron**: Real-time canvas artifact with chromatic dispersion (RGB split) and Star-6 optical flares.
+- **Draggable Physics Stickers**: Interactive tactile badges with grab/drop sound synthesis.
+- **Interactive Terminal**: Retro command terminal at the bottom of the page.
 
 ---
 
 ## ✦ Getting Started
 
-### Method 1: Instant Direct Launch (No Build Step Required)
-Simply double-click `index.html` or open it in any modern browser (Chrome, Edge, Firefox, Safari).
-
-### Method 2: Local HTTP Server
+### Open Locally
+Double-click `index.html` or run:
 ```bash
 npm start
-# Or using Python:
-python -m http.server 3000
+# or: python -m http.server 3000
 ```
-
-### Method 3: Deploy to GitHub Pages
-1. Push your code to your repository:
-   ```bash
-   git add .
-   git commit -m "feat: complete haoqi-inspired portfolio"
-   git push origin main
-   ```
-2. In your GitHub repository (`github.com/lawre-cell/PERSONAL-PORTFOLIO`), go to **Settings > Pages**.
-3. Under **Build and deployment**, select **Source: Deploy from a branch** -> branch **`main`** / folder **`/(root)`**.
-4. Your portfolio will be live at `https://lawre-cell.github.io/PERSONAL-PORTFOLIO/`!
-

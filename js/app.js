@@ -3,127 +3,80 @@
  * Inspired by haoqi.design — Retro-Futurist Datasheet & Studio Notebook Architecture
  */
 
-// Project Database
+// Project Database (Clean placeholders ready for Lawrence to fill)
 const PROJECTS_DATA = [
   {
-    code: 'SYS-01',
-    title: 'SpectrumVision RF Surveillance Engine',
-    category: 'systems',
-    domain: 'Radio Frequency / SDR',
-    stack: ['C++20', 'FFTW3', 'SDRplay', 'Qt6'],
+    code: 'PROJ-01',
+    title: '[ Project 01 Title ]',
+    category: 'all',
+    domain: '[ Project Domain / Field ]',
+    stack: ['[ Stack 1 ]', '[ Stack 2 ]', '[ Stack 3 ]'],
     year: '2026',
     status: 'prod',
     statusLabel: 'Production',
-    summary: 'High-throughput wideband spectrum search and signal acquisition pipeline capable of processing 40 MSPS with real-time FFT waterfall visualization and automated carrier detection.',
-    github: 'https://github.com/Lawrence-cell/receiver_search_spectrum_project',
+    summary: '[ Enter your project summary and description here. Ready for your own text. ]',
+    github: 'https://github.com/Lawrence-cell',
     features: [
-      'Multi-threaded DSP pipeline utilizing lock-free circular ring buffers',
-      'SIMD-accelerated FFT processing with sub-millisecond peak detection',
-      'Configurable SNR thresholding and automatic carrier frequency tagging',
-      'Low-latency OpenGL spectral waterfall and density heatmaps'
+      '[ Key feature or achievement 01 ]',
+      '[ Key feature or achievement 02 ]',
+      '[ Key feature or achievement 03 ]'
     ],
-    architecture: 'Modular pipeline separating hardware I/Q capture, windowing/FFT analysis, and GUI rendering across dedicated pinned CPU cores.',
-    metrics: 'Sustained 40 MSPS ingestion @ < 4% frame loss on commodity multi-core hardware.'
+    architecture: '[ Architecture and implementation details here. ]',
+    metrics: '[ Key performance metrics or benchmarks here. ]'
   },
   {
-    code: 'DSP-02',
-    title: 'GNU Radio Symbol Synchronizer',
-    category: 'signal',
-    domain: 'Digital Signal Processing',
-    stack: ['Python', 'C++', 'GNU Radio', 'NumPy'],
-    year: '2025',
+    code: 'PROJ-02',
+    title: '[ Project 02 Title ]',
+    category: 'all',
+    domain: '[ Project Domain / Field ]',
+    stack: ['[ Stack 1 ]', '[ Stack 2 ]', '[ Stack 3 ]'],
+    year: '2026',
     status: 'oss',
     statusLabel: 'Open Source',
-    summary: 'Software implementation of timing recovery and symbol synchronization algorithms modeling GNU Radio native modules for digital modulation schemes (BPSK, QPSK, 16-QAM).',
-    github: 'https://github.com/Lawrence-cell/symbol_sync_py',
+    summary: '[ Enter your project summary and description here. Ready for your own text. ]',
+    github: 'https://github.com/Lawrence-cell',
     features: [
-      'Gardner and Mueller & Müller timing error detector (TED) implementations',
-      'Polyphase filterbank interpolator for arbitrary fractional sample delays',
-      'I/Q constellation diagram rendering and EVM (Error Vector Magnitude) calculation',
-      'Complete test harness verifying loop bandwidth and damping factor convergence'
+      '[ Key feature or achievement 01 ]',
+      '[ Key feature or achievement 02 ]'
     ],
-    architecture: 'Discrete-time feedback control loop combining phase detector, loop filter, and numerically controlled oscillator (NCO).',
-    metrics: 'Locked symbol timing down to 2 dB SNR in AWGN channel simulations.'
+    architecture: '[ Architecture and implementation details here. ]',
+    metrics: '[ Key performance metrics or benchmarks here. ]'
   },
   {
-    code: 'UTL-03',
-    title: 'WinSpotlight Dual-Monitor Sync',
-    category: 'utilities',
-    domain: 'Systems Utility',
-    stack: ['C++', 'Win32 API', 'GDI+', 'PowerShell'],
+    code: 'PROJ-03',
+    title: '[ Project 03 Title ]',
+    category: 'all',
+    domain: '[ Project Domain / Field ]',
+    stack: ['[ Stack 1 ]', '[ Stack 2 ]'],
     year: '2025',
     status: 'prod',
     statusLabel: 'Production',
-    summary: 'Lightweight Windows background daemon that monitors, extracts, and synchronizes 4K Windows Spotlight lock screen photography across multi-display setups.',
-    github: 'https://github.com/Lawrence-cell/Wallpaper_Sync_WithWinSpotlight',
+    summary: '[ Enter your project summary and description here. Ready for your own text. ]',
+    github: 'https://github.com/Lawrence-cell',
     features: [
-      'Zero-CPU event-driven file system watcher on Windows AppData assets',
-      'Per-monitor aspect ratio cropping and multi-monitor virtual canvas stitching',
-      'Metadata filtering to discard non-photographic icon and thumbnail cache files',
-      'Native Win32 system tray integration with minimal RAM footprint (< 12MB)'
+      '[ Key feature or achievement 01 ]',
+      '[ Key feature or achievement 02 ]'
     ],
-    architecture: 'Background worker service utilizing Win32 IActiveDesktop COM interfaces and shell change notifications.',
-    metrics: '< 0.1% background CPU utilization, zero battery drain.'
+    architecture: '[ Architecture and implementation details here. ]',
+    metrics: '[ Key performance metrics or benchmarks here. ]'
   },
   {
-    code: 'SIM-04',
-    title: 'ChickRace Concurrency Simulation',
-    category: 'systems',
-    domain: 'Multi-threaded Simulation',
-    stack: ['C++17', 'POSIX Threads', 'Atomic', 'CMake'],
-    year: '2025',
-    status: 'oss',
-    statusLabel: 'Open Source',
-    summary: 'High-performance concurrent simulation engine demonstrating synchronized thread execution, deterministic state machines, and real-time race telemetry output.',
-    github: 'https://github.com/Lawrence-cell/CHICKRACE',
-    features: [
-      'Lock-free atomic state tracking minimizing mutex contention across threads',
-      'Deterministic pseudo-random velocity generators based on PCG algorithm',
-      'Real-time ASCII/ANSI terminal telemetry visualizer with millisecond precision',
-      'Race condition testing suite with ThreadSanitizer (TSan) validation'
-    ],
-    architecture: 'Master coordinator orchestrating N worker threads with condition variables and barrier synchronization.',
-    metrics: 'Deterministic multi-thread convergence verified with 0 data races.'
-  },
-  {
-    code: 'IOT-05',
-    title: 'BlackBird Remote Telemetry Bus',
-    category: 'utilities',
-    domain: 'Remote Control & IoT',
-    stack: ['Python', 'AsyncIO', 'Protobuf', 'ZeroMQ'],
+    code: 'PROJ-04',
+    title: '[ Project 04 Title ]',
+    category: 'all',
+    domain: '[ Project Domain / Field ]',
+    stack: ['[ Stack 1 ]', '[ Stack 2 ]'],
     year: '2025',
     status: 'exp',
     statusLabel: 'Experimental',
-    summary: 'Asynchronous remote control server and command dispatcher engineered for telemetry gathering, heartbeat monitoring, and device control over constrained network links.',
-    github: 'https://github.com/Lawrence-cell/Black_bird_remoter',
+    summary: '[ Enter your project summary and description here. Ready for your own text. ]',
+    github: 'https://github.com/Lawrence-cell',
     features: [
-      'Compact Protocol Buffers serialization for bandwidth-efficient transmission',
-      'Heartbeat timeout detection and graceful reconnection backoff strategy',
-      'Cross-platform remote command dispatcher with safety sandboxing',
-      'Real-time terminal telemetry monitor with tabular latency statistics'
+      '[ Key feature or achievement 01 ]',
+      '[ Key feature or achievement 02 ]'
     ],
-    architecture: 'Pub/Sub telemetry broadcast coupled with Req/Rep command channels over non-blocking sockets.',
-    metrics: '< 15ms round-trip latency on local mesh networks.'
-  },
-  {
-    code: 'WEB-06',
-    title: 'Aura Retro-Futurist WebGL Stage',
-    category: 'web',
-    domain: 'Creative Engineering',
-    stack: ['JavaScript ES6', 'WebGL', 'Canvas2D', 'Web Audio'],
-    year: '2026',
-    status: 'prod',
-    statusLabel: 'Production',
-    summary: 'High-fidelity design engineering showcase featuring interactive 3D refraction shaders, chromatic dispersion, procedural sound synthesis, and tactile physics stickers.',
-    github: 'https://github.com/Lawrence-cell/PERSONAL-PORTFOLIO',
-    features: [
-      'Hybrid DOM and WebGL canvas stage synchronized with inertial scrolling',
-      'Real-time chromatic dispersion (RGB offset) and glass refraction shaders',
-      'Web Audio API procedural sound synthesizer for tactile UI micro-interactions',
-      'Inertial draggable physics stickers and retro-futurist character scramble decoder'
-    ],
-    architecture: 'Zero-framework vanilla modern web architecture delivering 60 FPS performance and instant zero-dependency load times.',
-    metrics: '100/100 Lighthouse performance score with zero external library bloat.'
+    architecture: '[ Architecture and implementation details here. ]',
+    metrics: '[ Key performance metrics or benchmarks here. ]'
   }
 ];
 
@@ -752,20 +705,16 @@ class PortfolioApp {
       case 'about':
         outLine.className += ' out-dim';
         outLine.innerHTML = `
-          LAWRENCE // SYSTEMS ENGINEER & DESIGN TECHNOLOGIST<br>
-          Specializing in C++, Digital Signal Processing (DSP), RF telemetry,<br>
-          and tactile modern web interfaces. Passionate about retro-futurist<br>
-          datasheet aesthetics, low-level efficiency, and human-crafted interfaces.
+          LAWRENCE // ABOUT<br>
+          [ Ready for your personal biography and background. ]
         `;
         break;
 
       case 'skills':
         outLine.className += ' out-green';
         outLine.innerHTML = `
-          SYSTEMS & ARCHITECTURE : C++20, C, Multithreading, Posix, Win32 API<br>
-          SIGNAL & RF             : GNU Radio, FFTW3, SDR, Modulation, DSP<br>
-          FRONTEND & CREATIVE     : WebGL, Three.js, Canvas, ES6, Web Audio<br>
-          INFRASTRUCTURE          : Git/GitHub, CMake, Linux, Python AsyncIO
+          SKILLS & CAPABILITIES<br>
+          [ Ready for your technical skills, stack, and focus areas. ]
         `;
         break;
 
