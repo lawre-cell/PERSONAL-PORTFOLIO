@@ -236,6 +236,30 @@ body {
 }
 
 /* ==========================================================================
+   SESSION BLOCK (FULL VIEWPORT SESSION FRAMEWORK)
+   ========================================================================== */
+
+.session-block {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: var(--header-height);
+  position: relative;
+  z-index: 2;
+  padding: 88px 36px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 768px) {
+  .session-block {
+    min-height: auto;
+    padding: 64px 18px;
+  }
+}
+
+/* ==========================================================================
    CUSTOM CURSOR
    ========================================================================== */
 
