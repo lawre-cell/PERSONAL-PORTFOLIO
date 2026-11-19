@@ -2606,6 +2606,161 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   TECHNICAL STACK & FRAMEWORK LOGO SHOWCASE
+   ========================================================================== */
+
+.tech-showcase-section {
+  max-width: 1280px;
+  margin: 56px auto 0 auto;
+}
+
+.tech-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.tech-logo-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-logo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--tech-accent, var(--accent-cyan)), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.tech-logo-card:hover {
+  border-color: var(--tech-accent, var(--accent-cyan));
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.tech-logo-card:hover::before {
+  opacity: 1;
+}
+
+.tech-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tech-card-domain {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.tech-card-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.tech-card-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tech-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tech-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tech-logo-card:hover .tech-icon-wrap {
+  transform: scale(1.08);
+  border-color: var(--tech-accent, var(--accent-cyan));
+}
+
+.tech-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tech-card-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.tech-card-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+}
+
+.tech-card-desc {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tech-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.tech-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.tech-logo-card:hover .tech-chip {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
    MULTI-SESSION ARCHITECTURE (ABOUT, PROJECTS, TEAM, ART EQUAL DEPTH)
    ========================================================================== */
 
