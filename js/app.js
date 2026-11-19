@@ -948,4 +948,160 @@ document.addEventListener('DOMContentLoaded', () => {
       window.stickerSystemInstance.resetAll();
     });
   }
+
+  // Initialize Floating Tech Orbit on About session
+  if (document.getElementById('floatingTechStage')) {
+    initFloatingTechOrbit();
+  }
 });
+
+/**
+ * ZERO-GRAVITY FLOATING FRAMEWORKS & LANGUAGES
+ * Interactive tactile physics badges for the About session
+ */
+function initFloatingTechOrbit() {
+  const stage = document.getElementById('floatingTechStage');
+  if (!stage) return;
+
+  const badges = Array.from(stage.querySelectorAll('.floating-tech-badge'));
+  if (!badges.length) return;
+
+  let activeDrag = null;
+  let startX = 0, startY = 0;
+  let origLeft = 0, origTop = 0;
+
+  // Preset percentage positions distributed organically across the 2D stage
+  const defaultPositions = [
+    { leftPercent: 0.05, topPercent: 0.18, rot: -4 }, // Next.js
+    { leftPercent: 0.27, topPercent: 0.12, rot: 5 },  // TypeScript
+    { leftPercent: 0.51, topPercent: 0.16, rot: -3 }, // Java
+    { leftPercent: 0.74, topPercent: 0.12, rot: 4 },  // PostgreSQL
+    { leftPercent: 0.08, topPercent: 0.60, rot: 3 },  // Express.js
+    { leftPercent: 0.32, topPercent: 0.56, rot: -5 }, // Python
+    { leftPercent: 0.56, topPercent: 0.62, rot: 2 },  // Node.js
+    { leftPercent: 0.78, topPercent: 0.58, rot: -3 }, // Git & CI/CD
+    { leftPercent: 0.42, topPercent: 0.36, rot: 6 },  // React
+    { leftPercent: 0.66, topPercent: 0.38, rot: -4 }  // SQL & Data Architecture
+  ];
+
+  function positionBadges() {
+    const stageRect = stage.getBoundingClientRect();
+    const stageW = stageRect.width || stage.offsetWidth || 800;
+    const stageH = stageRect.height || stage.offsetHeight || 360;
+
+    badges.forEach((badge, idx) => {
+      const cfg = defaultPositions[idx % defaultPositions.length];
+      const badgeW = badge.offsetWidth || 150;
+      const badgeH = badge.offsetHeight || 44;
+
+      const maxLeft = Math.max(0, stageW - badgeW - 12);
+      const maxTop = Math.max(0, stageH - badgeH - 12);
+
+      const targetX = Math.min(maxLeft, Math.max(12, stageW * cfg.leftPercent));
+      const targetY = Math.min(maxTop, Math.max(12, stageH * cfg.topPercent));
+
+      badge.dataset.defaultX = targetX;
+      badge.dataset.defaultY = targetY;
+      badge.dataset.currentX = targetX;
+      badge.dataset.currentY = targetY;
+      badge.dataset.rot = cfg.rot;
+
+      badge.style.left = `${targetX}px`;
+      badge.style.top = `${targetY}px`;
+      badge.style.transform = `rotate(${cfg.rot}deg)`;
+    });
+  }
+
+  // Position on load & resize
+  setTimeout(positionBadges, 80);
+  window.addEventListener('resize', () => {
+    if (!activeDrag) positionBadges();
+  });
+
+  // Pointer drag events
+  badges.forEach((badge) => {
+    badge.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      activeDrag = badge;
+      startX = e.clientX;
+      startY = e.clientY;
+      origLeft = parseFloat(badge.style.left) || 0;
+      origTop = parseFloat(badge.style.top) || 0;
+
+      badge.classList.add('is-dragging');
+      badge.style.zIndex = '50';
+      badge.style.animationPlayState = 'paused';
+
+      if (window.soundEngine && typeof window.soundEngine.playClick === 'function') {
+        window.soundEngine.playClick();
+      }
+    });
+
+    badge.addEventListener('dblclick', () => {
+      resetBadge(badge);
+    });
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!activeDrag) return;
+    const stageRect = stage.getBoundingClientRect();
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    const badgeW = activeDrag.offsetWidth || 150;
+    const badgeH = activeDrag.offsetHeight || 44;
+    const maxLeft = stageRect.width - badgeW - 8;
+    const maxTop = stageRect.height - badgeH - 8;
+
+    const newLeft = Math.max(8, Math.min(maxLeft, origLeft + dx));
+    const newTop = Math.max(8, Math.min(maxTop, origTop + dy));
+
+    activeDrag.style.left = `${newLeft}px`;
+    activeDrag.style.top = `${newTop}px`;
+    const tilt = Math.max(-12, Math.min(12, dx * 0.08));
+    activeDrag.style.transform = `rotate(${tilt}deg) scale(1.06)`;
+  });
+
+  window.addEventListener('pointerup', () => {
+    if (!activeDrag) return;
+    const badge = activeDrag;
+    badge.classList.remove('is-dragging');
+    badge.style.zIndex = '15';
+    badge.style.animationPlayState = 'running';
+
+    const settleRot = Math.floor(Math.random() * 10 - 5);
+    badge.style.transform = `rotate(${settleRot}deg)`;
+
+    if (window.soundEngine && typeof window.soundEngine.playStickerDrop === 'function') {
+      window.soundEngine.playStickerDrop();
+    }
+
+    activeDrag = null;
+  });
+
+  function resetBadge(badge) {
+    badge.style.transition = 'left 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    const defX = parseFloat(badge.dataset.defaultX) || 20;
+    const defY = parseFloat(badge.dataset.defaultY) || 20;
+    const rot = parseFloat(badge.dataset.rot) || 0;
+
+    badge.style.left = `${defX}px`;
+    badge.style.top = `${defY}px`;
+    badge.style.transform = `rotate(${rot}deg)`;
+
+    setTimeout(() => {
+      badge.style.transition = '';
+    }, 450);
+
+    if (window.soundEngine && typeof window.soundEngine.playChirp === 'function') {
+      window.soundEngine.playChirp(600, 1000, 0.06);
+    }
+  }
+
+  const resetBtn = document.getElementById('resetFloatingTechBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      badges.forEach(b => resetBadge(b));
+    });
+  }
+}
