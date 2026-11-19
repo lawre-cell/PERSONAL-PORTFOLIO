@@ -284,6 +284,14 @@ class PortfolioApp {
     const btnLabel = document.getElementById('bgmBtnLabel');
     if (!audio) return;
 
+    // Restore saved playback position for seamless cross-page playback
+    try {
+      const savedTime = parseFloat(sessionStorage.getItem('bgm_playback_time'));
+      if (savedTime && !isNaN(savedTime) && isFinite(savedTime)) {
+        audio.currentTime = savedTime;
+      }
+    } catch (e) {}
+
     // Initialize Web Audio graph for maximum loudness
     window.soundEngine.initBgm(audio);
 
@@ -293,13 +301,18 @@ class PortfolioApp {
         if (visualizer) visualizer.classList.remove('paused');
         if (btnLabel) btnLabel.textContent = 'AUDIO: LIVE [100%]';
       }
+      try {
+        if (!audio.paused && audio.currentTime > 0) {
+          sessionStorage.setItem('bgm_playback_time', audio.currentTime.toString());
+        }
+      } catch (e) {}
     };
 
     audio.addEventListener('play', updateUI);
     audio.addEventListener('playing', updateUI);
 
-    // Initial check
-    setInterval(updateUI, 400);
+    // Initial check and periodic position save
+    setInterval(updateUI, 500);
   }
 
   /* ========================================================================
@@ -864,23 +877,26 @@ class PortfolioApp {
   }
 
   /* ========================================================================
-     13. TAB NAVIGATION CONTROLLER (BALANCED MULTI-SESSION OBSERVER)
+     13. TAB NAVIGATION CONTROLLER (MULTI-PAGE & ACTIVE LINK CONTROLLER)
      ======================================================================== */
   initTabNavigation() {
     const navLinks = document.querySelectorAll('.nav-links .nav-link');
-    const sections = ['about', 'projects', 'team', 'art'].map(id => document.getElementById(id)).filter(Boolean);
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Click handler for top nav links
     navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      // If current file name matches link href (e.g. art.html), mark active
+      if (href && (href === currentPath || (currentPath === '' && href === 'index.html'))) {
+        link.classList.add('active');
+      }
       link.addEventListener('click', () => {
         if (window.soundEngine) window.soundEngine.playClick();
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
       });
     });
 
-    // IntersectionObserver to highlight top tab based on current session in viewport
-    if ('IntersectionObserver' in window && sections.length > 0) {
+    // Also support anchor scroll spy if multiple sessions exist on single page
+    const sections = ['about', 'projects', 'team', 'art'].map(id => document.getElementById(id)).filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length > 1) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -889,7 +905,7 @@ class PortfolioApp {
               const href = link.getAttribute('href');
               if (href === `#${id}`) {
                 link.classList.add('active');
-              } else {
+              } else if (!href.includes(currentPath)) {
                 link.classList.remove('active');
               }
             });
