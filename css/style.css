@@ -2543,6 +2543,69 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   PORTAL DIRECTORY GRID (MULTI-PAGE ARCHITECTURE)
+   ========================================================================== */
+
+.portal-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.portal-page-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  transition: all var(--transition-smooth);
+  text-decoration: none;
+}
+
+.portal-page-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.portal-page-card .card-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  display: flex;
+  justify-content: space-between;
+}
+
+.portal-page-card .card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.portal-page-card .card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.portal-page-card .card-cta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
    MULTI-SESSION ARCHITECTURE (ABOUT, PROJECTS, TEAM, ART EQUAL DEPTH)
    ========================================================================== */
 

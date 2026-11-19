@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWRENCE // TEAM — Collective Mission, Roster & Collaborators</title>
+  <meta name="description" content="The team, collaborative research group, and cross-disciplinary roster led by Lawrence (@Lawrence-cell).">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⟡</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       START: PROJECTED BACKGROUND & AUDIO ENGINE
+       ======================================================================== -->
+  <div class="projector-background-layer" id="projectorLayer">
+    <video id="bgVideoPlayer" class="projector-video" autoplay loop muted playsinline preload="auto">
+      <source src="assets/videos/background-feed.mp4" type="video/mp4">
+      <source src="WIN_20261104_05_10_52_Pro.mp4" type="video/mp4">
+    </video>
+    <div class="projector-optical-overlay"></div>
+    <div class="projector-beam"></div>
+  </div>
+
+  <!-- Background Instrumental Music (Autoplay Immediately at Max Loudness) -->
+  <audio id="bgMusicPlayer" autoplay loop preload="auto">
+    <source src="assets/audio/instrumentals.mp3" type="audio/mpeg">
+    <source src="instrumentals.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgMusicPlayer');
+      if (!audio) return;
+      try {
+        const savedTime = parseFloat(sessionStorage.getItem('bgm_playback_time'));
+        if (savedTime && !isNaN(savedTime) && isFinite(savedTime)) {
+          audio.currentTime = savedTime;
+        }
+      } catch (e) {}
+      audio.volume = 1.0;
+      const start = () => {
+        audio.volume = 1.0;
+        audio.play().catch(() => {});
+      };
+      start();
+      const omniEvents = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'scroll', 'touchstart', 'keydown', 'mouseenter', 'focus'];
+      const onUserMotion = () => {
+        start();
+        if (!audio.paused) {
+          omniEvents.forEach(e => window.removeEventListener(e, onUserMotion, true));
+        }
+      };
+      omniEvents.forEach(e => window.addEventListener(e, onUserMotion, { capture: true, passive: true }));
+    })();
+  </script>
+
+  <div class="bg-grid-overlay"></div>
+  <div class="bg-radial-gradient"></div>
+
+  <div class="custom-cursor" id="customCursor">
+    <div class="custom-cursor-dot"></div>
+    <span class="custom-cursor-label" id="cursorLabel">VIEW</span>
+  </div>
+  <!-- ========================================================================
+       END: PROJECTED BACKGROUND & AUDIO ENGINE
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: TOP NAVIGATION BAR
+       ======================================================================== -->
+  <header class="top-bar">
+    <div class="brand-section">
+      <a href="index.html" class="brand-logo" data-cursor="HOME">
+        <span class="logo-mark"></span>
+        <span class="scramble-hover" data-scramble>LAWRENCE</span>
+      </a>
+      <div class="telemetry-status">
+        <span class="pulse-dot"></span>
+        <span class="font-mono" style="font-size:11px;">ONLINE</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs: ABOUT, PROJECTS, TEAM (active), ART -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="about.html" class="nav-link" data-scramble>ABOUT</a></li>
+        <li><a href="projects.html" class="nav-link" data-scramble>PROJECTS</a></li>
+        <li><a href="team.html" class="nav-link active" data-scramble>TEAM</a></li>
+        <li><a href="art.html" class="nav-link" data-scramble>ART</a></li>
+      </ul>
+    </nav>
+
+    <div class="control-cluster">
+      <div class="clock-display" id="liveClock">UTC+0 00:00:00</div>
+      <div class="badge-telemetry active" id="bgmTelemetryBadge" title="Instrumentals Autoplaying at Maximum Volume" style="cursor:default;">
+        <span class="bgm-eq-visualizer" id="bgmVisualizer">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </span>
+        <span id="bgmBtnLabel">AUDIO: LIVE [100%]</span>
+      </div>
+      <button class="control-btn" id="projectorToggleBtn" title="Toggle background screen projection">
+        <span class="pulse-dot" style="background:var(--accent-cyan);"></span> PROJ: ON
+      </button>
+      <button class="control-btn" id="sfxToggleBtn" title="Toggle UI sound synthesis">
+        <span style="color:var(--accent-cyan);">●</span> SFX: ON
+      </button>
+      <button class="control-btn" id="themeToggleBtn" title="Toggle dark/light system mode">
+        <span class="pulse-dot"></span> DARK
+      </button>
+      <button class="mobile-nav-toggle" id="mobileNavToggle">MENU</button>
+    </div>
+  </header>
+  <!-- ========================================================================
+       END: TOP NAVIGATION BAR
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: TEAM PAGE CONTENT
+       Speaks of: Collective Identity, Shared Mission, Roster & Roles, Collaborative Initiatives
+       ======================================================================== -->
+  <main class="team-section session-block" id="team" style="min-height: calc(100vh - var(--header-height));">
+    <div class="section-header" style="max-width:1280px; margin:0 auto 36px auto;">
+      <div class="section-title-wrap">
+        <span class="sub">// PAGE 03</span>
+        <h1 class="section-title">TEAM</h1>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        COLLECTIVE MISSION, ROSTER & ACTIVE INITIATIVES
+      </div>
+    </div>
+
+    <!-- NODE 3.1: COLLECTIVE IDENTITY & MISSION STATEMENT -->
+    <div class="team-mission-banner corner-frame">
+      <div class="session-subcard-header" style="margin-bottom:12px;">
+        <span>// 01. COLLECTIVE IDENTITY & MISSION</span>
+        <span class="badge-telemetry active">SHARED PURPOSE</span>
+      </div>
+      <h3>[ YOUR TEAM / COLLECTIVE NAME HERE ]</h3>
+      <p>
+        [ Enter your team or collective's overarching mission here. Explain what unites you, the computational or research challenges you solve together, and how cross-disciplinary collaboration elevates your work. Ready for your own words. ]
+      </p>
+    </div>
+
+    <!-- NODE 3.2: CORE ROSTER & MEMBER PROFILES -->
+    <div style="max-width:1280px; margin:0 auto 20px auto;">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>// 02. CORE ROSTER & COLLABORATORS</span>
+      </div>
+    </div>
+    <div class="team-grid">
+      <!-- Member 1: Lawrence (Lead) -->
+      <div class="team-card corner-frame">
+        <div class="team-card-header">
+          <span>MEMBER #01</span>
+          <span class="badge-telemetry active">LEAD</span>
+        </div>
+        <div class="team-avatar-wrap">
+          <img src="assets/images/lawrence-formal.jpg" alt="Lawrence" />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-name">LAWRENCE</h3>
+          <span class="team-role">Data Scientist & Software Developer & Poet</span>
+          <p class="team-bio">
+            [ Enter your lead role, focus, and responsibilities within the team or collective here. ]
+          </p>
+          <div class="team-links">
+            <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="mailto:lheklah@st.ug.edu.gh">Email ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member 2: Engineering / Architecture Collaborator -->
+      <div class="team-card corner-frame">
+        <div class="team-card-header">
+          <span>MEMBER #02</span>
+          <span class="badge-telemetry">ENGINEERING</span>
+        </div>
+        <div class="team-avatar-wrap">
+          <img src="assets/images/lawrence-event.jpg" alt="Team Member 2" />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
+          <span class="team-role">[ Software Engineer / Systems Architect ]</span>
+          <p class="team-bio">
+            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
+          </p>
+          <div class="team-links">
+            <a href="#">Profile ↗</a>
+            <a href="#">Contact ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member 3: Data / Research Collaborator -->
+      <div class="team-card corner-frame">
+        <div class="team-card-header">
+          <span>MEMBER #03</span>
+          <span class="badge-telemetry">RESEARCH</span>
+        </div>
+        <div class="team-avatar-wrap">
+          <img src="assets/images/lawrence-cyber.jpg" alt="Team Member 3" />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
+          <span class="team-role">[ Data Scientist / ML Researcher ]</span>
+          <p class="team-bio">
+            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
+          </p>
+          <div class="team-links">
+            <a href="#">Profile ↗</a>
+            <a href="#">Contact ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member 4: Design / Creative Collaborator -->
+      <div class="team-card corner-frame">
+        <div class="team-card-header">
+          <span>MEMBER #04</span>
+          <span class="badge-telemetry">CREATIVE</span>
+        </div>
+        <div class="team-avatar-wrap">
+          <img src="assets/images/lawrence-dark.jpg" alt="Team Member 4" />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
+          <span class="team-role">[ Designer / Creative Technologist ]</span>
+          <p class="team-bio">
+            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
+          </p>
+          <div class="team-links">
+            <a href="#">Profile ↗</a>
+            <a href="#">Contact ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 3.3: ACTIVE JOINT INITIATIVES -->
+    <div style="max-width:1280px; margin:48px auto 0 auto;">
+      <div class="hero-eyebrow" style="margin-bottom:20px;">
+        <span class="line"></span>
+        <span>// 03. ACTIVE COLLABORATIVE INITIATIVES</span>
+      </div>
+      <div class="session-subgrid" style="margin-top:16px;">
+        <div class="session-subcard corner-frame">
+          <div class="session-subcard-header">
+            <span>INITIATIVE // 01</span>
+            <span class="badge-telemetry active">IN PROGRESS</span>
+          </div>
+          <h3 class="session-subcard-title">[ INITIATIVE 01 TITLE ]</h3>
+          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
+            [ Describe the collaborative build, research agenda, or group system being developed here. ]
+          </p>
+          <div class="font-mono text-muted" style="font-size:11px; margin-top:8px;">
+            TEAM: [ Lawrence + Collaborators ]
+          </div>
+        </div>
+
+        <div class="session-subcard corner-frame">
+          <div class="session-subcard-header">
+            <span>INITIATIVE // 02</span>
+            <span class="badge-telemetry active">ACTIVE</span>
+          </div>
+          <h3 class="session-subcard-title">[ INITIATIVE 02 TITLE ]</h3>
+          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
+            [ Describe the collaborative build, research agenda, or group system being developed here. ]
+          </p>
+          <div class="font-mono text-muted" style="font-size:11px; margin-top:8px;">
+            TEAM: [ Open Source Working Group ]
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 3.4: COLLABORATION & JOIN US -->
+    <div class="team-mission-banner corner-frame" style="margin-top:36px; border-left:3px solid var(--accent-emerald);">
+      <div class="session-subcard-header" style="margin-bottom:12px;">
+        <span>// 04. JOIN / COLLABORATE WITH THE TEAM</span>
+        <span class="badge-telemetry active">OPEN TO TALENT</span>
+      </div>
+      <h3>[ WANT TO BUILD OR RESEARCH WITH US? ]</h3>
+      <p>
+        [ Enter your invitation for collaborators, contributors, student researchers, or sponsors here. Explain how people can connect with your team. ]
+      </p>
+      <div style="margin-top:16px;">
+        <a href="#contact" class="btn-primary" data-cursor="TRANSMISSION">
+          <span>CONNECT WITH TEAM</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Portal Navigation Row to Other Pages -->
+    <div style="max-width:1280px; margin:48px auto 0 auto; display:flex; gap:16px; flex-wrap:wrap;">
+      <a href="about.html" class="btn-secondary" data-cursor="ABOUT">
+        <span>← VIEW ABOUT PAGE</span>
+      </a>
+      <a href="projects.html" class="btn-secondary" data-cursor="PROJECTS">
+        <span>VIEW PROJECTS PAGE →</span>
+      </a>
+      <a href="art.html" class="btn-secondary" data-cursor="ART">
+        <span>VIEW ART PAGE →</span>
+      </a>
+    </div>
+  </main>
+  <!-- ========================================================================
+       END: TEAM PAGE CONTENT
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: CONTACT & TERMINAL SESSION
+       ======================================================================== -->
+  <section class="terminal-section session-block" id="contact">
+    <div class="section-header" style="max-width:960px; margin:0 auto 36px auto;">
+      <div class="section-title-wrap">
+        <span class="sub">// TRANSMISSION</span>
+        <h2 class="section-title">CONTACT</h2>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        READY FOR CONNECTIONS & COLLABORATIONS
+      </div>
+    </div>
+
+    <!-- Embedded Retro Terminal -->
+    <div class="terminal-container corner-frame">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot close"></div>
+          <div class="terminal-dot minimize"></div>
+          <div class="terminal-dot maximize"></div>
+        </div>
+        <div class="terminal-title">LAWRENCE_SHELL.sh</div>
+        <div class="font-mono" style="font-size:10px; color:var(--text-muted);">ONLINE</div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-line out-dim">// LAWRENCE DEV TRANSMISSION SYSTEM</div>
+        <div class="terminal-line out-cyan">// Type 'help' to review commands, or 'team' for collective specs.</div>
+      </div>
+      <div style="padding:10px 16px; background:var(--bg-tertiary); border-top:1px solid var(--border-subtle);">
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">lawrence@sys:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input" placeholder="type 'help', 'about', 'projects', 'art'..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Action Contact Cards -->
+    <div class="contact-grid">
+      <a href="mailto:lheklah@st.ug.edu.gh" class="contact-card" id="copyEmailBtn" data-cursor="COPY">
+        <div class="contact-card-info">
+          <span class="label">DIRECT EMAIL</span>
+          <span class="val">lheklah@st.ug.edu.gh</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[COPY]</span>
+      </a>
+
+      <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">GITHUB PROFILE</span>
+          <span class="val">github.com/Lawrence-cell</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">LINKEDIN</span>
+          <span class="val">Lawrence</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+    </div>
+
+    <!-- Bottom Telemetry Footer -->
+    <div class="footer-bottom">
+      <div>
+        <span>LAWRENCE // PORTFOLIO</span>
+      </div>
+      <div>
+        <span>ABOUT • PROJECTS • TEAM • ART</span>
+      </div>
+      <div>
+        <span>ALL RIGHTS RESERVED © 2026</span>
+      </div>
+    </div>
+  </section>
+  <!-- ========================================================================
+       END: CONTACT & TERMINAL SESSION
+       ======================================================================== -->
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="pulse-dot"></span>
+    <span id="toastMsg">CONFIRMED</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/scramble.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

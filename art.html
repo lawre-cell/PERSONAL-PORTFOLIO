@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWRENCE // ART — Poetry Anthology, Verses & Visual Expressions</title>
+  <meta name="description" content="Poetic works, literary stanzas, spoken word audio, and visual photography by Lawrence (@Lawrence-cell).">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⟡</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       START: PROJECTED BACKGROUND & AUDIO ENGINE
+       ======================================================================== -->
+  <div class="projector-background-layer" id="projectorLayer">
+    <video id="bgVideoPlayer" class="projector-video" autoplay loop muted playsinline preload="auto">
+      <source src="assets/videos/background-feed.mp4" type="video/mp4">
+      <source src="WIN_20261104_05_10_52_Pro.mp4" type="video/mp4">
+    </video>
+    <div class="projector-optical-overlay"></div>
+    <div class="projector-beam"></div>
+  </div>
+
+  <!-- Background Instrumental Music (Autoplay Immediately at Max Loudness) -->
+  <audio id="bgMusicPlayer" autoplay loop preload="auto">
+    <source src="assets/audio/instrumentals.mp3" type="audio/mpeg">
+    <source src="instrumentals.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgMusicPlayer');
+      if (!audio) return;
+      try {
+        const savedTime = parseFloat(sessionStorage.getItem('bgm_playback_time'));
+        if (savedTime && !isNaN(savedTime) && isFinite(savedTime)) {
+          audio.currentTime = savedTime;
+        }
+      } catch (e) {}
+      audio.volume = 1.0;
+      const start = () => {
+        audio.volume = 1.0;
+        audio.play().catch(() => {});
+      };
+      start();
+      const omniEvents = ['pointerdown', 'pointermove', 'mousemove', 'wheel', 'scroll', 'touchstart', 'keydown', 'mouseenter', 'focus'];
+      const onUserMotion = () => {
+        start();
+        if (!audio.paused) {
+          omniEvents.forEach(e => window.removeEventListener(e, onUserMotion, true));
+        }
+      };
+      omniEvents.forEach(e => window.addEventListener(e, onUserMotion, { capture: true, passive: true }));
+    })();
+  </script>
+
+  <div class="bg-grid-overlay"></div>
+  <div class="bg-radial-gradient"></div>
+
+  <div class="custom-cursor" id="customCursor">
+    <div class="custom-cursor-dot"></div>
+    <span class="custom-cursor-label" id="cursorLabel">VIEW</span>
+  </div>
+  <!-- ========================================================================
+       END: PROJECTED BACKGROUND & AUDIO ENGINE
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: TOP NAVIGATION BAR
+       ======================================================================== -->
+  <header class="top-bar">
+    <div class="brand-section">
+      <a href="index.html" class="brand-logo" data-cursor="HOME">
+        <span class="logo-mark"></span>
+        <span class="scramble-hover" data-scramble>LAWRENCE</span>
+      </a>
+      <div class="telemetry-status">
+        <span class="pulse-dot"></span>
+        <span class="font-mono" style="font-size:11px;">ONLINE</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs: ABOUT, PROJECTS, TEAM, ART (active) -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="about.html" class="nav-link" data-scramble>ABOUT</a></li>
+        <li><a href="projects.html" class="nav-link" data-scramble>PROJECTS</a></li>
+        <li><a href="team.html" class="nav-link" data-scramble>TEAM</a></li>
+        <li><a href="art.html" class="nav-link active" data-scramble>ART</a></li>
+      </ul>
+    </nav>
+
+    <div class="control-cluster">
+      <div class="clock-display" id="liveClock">UTC+0 00:00:00</div>
+      <div class="badge-telemetry active" id="bgmTelemetryBadge" title="Instrumentals Autoplaying at Maximum Volume" style="cursor:default;">
+        <span class="bgm-eq-visualizer" id="bgmVisualizer">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </span>
+        <span id="bgmBtnLabel">AUDIO: LIVE [100%]</span>
+      </div>
+      <button class="control-btn" id="projectorToggleBtn" title="Toggle background screen projection">
+        <span class="pulse-dot" style="background:var(--accent-cyan);"></span> PROJ: ON
+      </button>
+      <button class="control-btn" id="sfxToggleBtn" title="Toggle UI sound synthesis">
+        <span style="color:var(--accent-cyan);">●</span> SFX: ON
+      </button>
+      <button class="control-btn" id="themeToggleBtn" title="Toggle dark/light system mode">
+        <span class="pulse-dot"></span> DARK
+      </button>
+      <button class="mobile-nav-toggle" id="mobileNavToggle">MENU</button>
+    </div>
+  </header>
+  <!-- ========================================================================
+       END: TOP NAVIGATION BAR
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: ART PAGE CONTENT
+       Speaks of: Poetry Collections, Stanzas & Verses, Visual Art, Spoken Word & Publications
+       ======================================================================== -->
+  <main class="art-section session-block" id="art" style="min-height: calc(100vh - var(--header-height));">
+    <div class="section-header" style="max-width:1280px; margin:0 auto 36px auto;">
+      <div class="section-title-wrap">
+        <span class="sub">// PAGE 04</span>
+        <h1 class="section-title">ART</h1>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        POETRY ANTHOLOGY, VERSES & VISUAL EXPRESSIONS
+      </div>
+    </div>
+
+    <!-- NODE 4.1: ARTISTIC STATEMENT & POETIC PHILOSOPHY -->
+    <div class="art-statement-banner corner-frame">
+      <div class="session-subcard-header" style="margin-bottom:12px;">
+        <span>// 01. ARTISTIC & POETIC STATEMENT</span>
+        <span class="badge-telemetry active">PHILOSOPHY</span>
+      </div>
+      <h3>[ POETICS, LYRICISM & THE CREATIVE MIND ]</h3>
+      <p>
+        "[ Enter your creative statement and poetic vision here. Explain how poetry lives alongside data science and code, the human emotions you translate into words, and the rhythmic voice you cultivate. Ready for your own words. ]"
+      </p>
+      <div style="font-family:var(--font-mono); font-size:11px; color:var(--accent-magenta); margin-top:12px;">
+        — Lawrence // Poetic Statement
+      </div>
+    </div>
+
+    <!-- NODE 4.2: POETRY ANTHOLOGY & SELECTED VERSES -->
+    <div style="max-width:1280px; margin:0 auto 20px auto;">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>// 02. POETRY ANTHOLOGY & SELECTED VERSES</span>
+      </div>
+    </div>
+    <div class="art-grid">
+      <!-- Poem 01 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>POEM #01</span>
+          <span class="badge-telemetry active">POETRY</span>
+        </div>
+        <div class="art-card-body" style="padding:28px 24px;">
+          <span class="art-type">// VERSE & LYRICS</span>
+          <h3 class="art-title">[ FIRST POEM TITLE ]</h3>
+          <div class="art-content">
+[ Stanza 1: Write or paste your first stanza here.
+Rhyme, meter, or free verse.
+Ready for your lyrical cadence. ]
+
+[ Stanza 2: Write or paste your second stanza here.
+Express your imagery, feeling, and thought. ]
+          </div>
+        </div>
+        <div class="art-card-footer">
+          <span>YEAR: [ 2026 ]</span>
+          <span>THEME: [ EXISTENCE / METRIC ]</span>
+        </div>
+      </div>
+
+      <!-- Poem 02 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>POEM #02</span>
+          <span class="badge-telemetry active">POETRY</span>
+        </div>
+        <div class="art-card-body" style="padding:28px 24px;">
+          <span class="art-type">// VERSE & LYRICS</span>
+          <h3 class="art-title">[ SECOND POEM TITLE ]</h3>
+          <div class="art-content">
+[ Stanza 1: Write or paste your first stanza here.
+Explore language, silence, and truth. ]
+
+[ Stanza 2: Write or paste your second stanza here.
+Reflect on the world, light, and shadows. ]
+          </div>
+        </div>
+        <div class="art-card-footer">
+          <span>YEAR: [ 2026 ]</span>
+          <span>THEME: [ REFLECTION ]</span>
+        </div>
+      </div>
+
+      <!-- Poem 03 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>POEM #03</span>
+          <span class="badge-telemetry active">POETRY</span>
+        </div>
+        <div class="art-card-body" style="padding:28px 24px;">
+          <span class="art-type">// VERSE & LYRICS</span>
+          <h3 class="art-title">[ THIRD POEM TITLE ]</h3>
+          <div class="art-content">
+[ Stanza 1: Write or paste your poem or prose poem here.
+Craft your rhythm and line breaks. ]
+
+[ Stanza 2: Final lines and resolving cadence. ]
+          </div>
+        </div>
+        <div class="art-card-footer">
+          <span>YEAR: [ 2025 ]</span>
+          <span>THEME: [ DREAMS & CODE ]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 4.3: VISUAL ART & PHOTOGRAPHY GALLERY -->
+    <div style="max-width:1280px; margin:48px auto 20px auto;">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>// 03. VISUAL ART & PHOTOGRAPHY</span>
+      </div>
+    </div>
+    <div class="art-grid">
+      <!-- Visual Piece 1 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>VISUAL #01</span>
+          <span class="badge-telemetry">PHOTOGRAPHY</span>
+        </div>
+        <div class="art-media-wrap">
+          <img src="assets/images/lawrence-dark.jpg" alt="Visual Art Piece" />
+        </div>
+        <div class="art-card-body">
+          <span class="art-type">// SHADOWS & AESTHETICS</span>
+          <h3 class="art-title">[ VISUAL PIECE 01 TITLE ]</h3>
+          <p class="team-bio">
+            [ Enter the description, medium, mood, or story behind this photographic / visual work. ]
+          </p>
+        </div>
+        <div class="art-card-footer">
+          <span>MEDIUM: [ Photography ]</span>
+          <span>YEAR: [ 2026 ]</span>
+        </div>
+      </div>
+
+      <!-- Visual Piece 2 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>VISUAL #02</span>
+          <span class="badge-telemetry">DIGITAL ART</span>
+        </div>
+        <div class="art-media-wrap">
+          <img src="assets/images/lawrence-cyber.jpg" alt="Digital Art Piece" />
+        </div>
+        <div class="art-card-body">
+          <span class="art-type">// CYBER & EXPERIMENTAL</span>
+          <h3 class="art-title">[ VISUAL PIECE 02 TITLE ]</h3>
+          <p class="team-bio">
+            [ Enter the creative computation concept, lighting, or narrative behind this piece. ]
+          </p>
+        </div>
+        <div class="art-card-footer">
+          <span>MEDIUM: [ Generative / Digital ]</span>
+          <span>YEAR: [ 2026 ]</span>
+        </div>
+      </div>
+
+      <!-- Visual Piece 3 -->
+      <div class="art-card corner-frame">
+        <div class="art-card-header">
+          <span>VISUAL #03</span>
+          <span class="badge-telemetry">COMPOSITION</span>
+        </div>
+        <div class="art-media-wrap">
+          <img src="assets/images/lawrence-event.jpg" alt="Composition Piece" />
+        </div>
+        <div class="art-card-body">
+          <span class="art-type">// FORM & LIGHT</span>
+          <h3 class="art-title">[ VISUAL PIECE 03 TITLE ]</h3>
+          <p class="team-bio">
+            [ Enter the visual statement, captured moment, or creative direction here. ]
+          </p>
+        </div>
+        <div class="art-card-footer">
+          <span>MEDIUM: [ Editorial / Lens ]</span>
+          <span>YEAR: [ 2025 ]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NODE 4.4: SPOKEN WORD & AUDIO READINGS -->
+    <div style="max-width:1280px; margin:48px auto 0 auto;">
+      <div class="hero-eyebrow" style="margin-bottom:20px;">
+        <span class="line"></span>
+        <span>// 04. SPOKEN WORD & AUDIO PERFORMANCES</span>
+      </div>
+      <div class="session-subgrid" style="margin-top:16px;">
+        <div class="session-subcard corner-frame">
+          <div class="session-subcard-header">
+            <span>AUDIO // PERFORMANCE 01</span>
+            <span class="badge-telemetry active">RECITAL</span>
+          </div>
+          <h3 class="session-subcard-title">[ SPOKEN WORD RECITAL TITLE ]</h3>
+          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
+            [ Enter recital details: spoken voice, poem recital with instrumental backing, or live reading recording. ]
+          </p>
+          <div class="audio-player-widget">
+            <span class="pulse-dot" style="background:var(--accent-magenta);"></span>
+            <div class="audio-player-waveform">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <span class="font-mono text-muted" style="font-size:11px;">[ READY FOR AUDIO FILE ]</span>
+          </div>
+        </div>
+
+        <!-- NODE 4.5: PUBLICATIONS & LITERARY SHOWCASES -->
+        <div class="session-subcard corner-frame">
+          <div class="session-subcard-header">
+            <span>PUBLICATIONS & EXHIBITIONS</span>
+            <span class="badge-telemetry">LITERARY</span>
+          </div>
+          <h3 class="session-subcard-title">WORDS IN PRINT & PUBLIC</h3>
+          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
+            [ List any journals, literary magazines, anthologies, recitals, or creative showcases where your work appeared. ]
+          </p>
+          <div class="timeline-header" style="margin-top:8px;">
+            <span class="timeline-role">[ PUBLICATION / SHOWCASE 01 ]</span>
+            <span class="timeline-date">[ 2026 ]</span>
+          </div>
+          <p class="font-mono text-muted" style="font-size:11px;">[ Outlet / Venue / Details ]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portal Navigation Row to Other Pages -->
+    <div style="max-width:1280px; margin:48px auto 0 auto; display:flex; gap:16px; flex-wrap:wrap;">
+      <a href="about.html" class="btn-secondary" data-cursor="ABOUT">
+        <span>← VIEW ABOUT PAGE</span>
+      </a>
+      <a href="projects.html" class="btn-secondary" data-cursor="PROJECTS">
+        <span>VIEW PROJECTS PAGE →</span>
+      </a>
+      <a href="team.html" class="btn-secondary" data-cursor="TEAM">
+        <span>VIEW TEAM PAGE →</span>
+      </a>
+    </div>
+  </main>
+  <!-- ========================================================================
+       END: ART PAGE CONTENT
+       ======================================================================== -->
+
+
+  <!-- ========================================================================
+       START: CONTACT & TERMINAL SESSION
+       ======================================================================== -->
+  <section class="terminal-section session-block" id="contact">
+    <div class="section-header" style="max-width:960px; margin:0 auto 36px auto;">
+      <div class="section-title-wrap">
+        <span class="sub">// TRANSMISSION</span>
+        <h2 class="section-title">CONTACT</h2>
+      </div>
+      <div class="font-mono text-muted" style="font-size:11px;">
+        READY FOR CONNECTIONS & COLLABORATIONS
+      </div>
+    </div>
+
+    <!-- Embedded Retro Terminal -->
+    <div class="terminal-container corner-frame">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot close"></div>
+          <div class="terminal-dot minimize"></div>
+          <div class="terminal-dot maximize"></div>
+        </div>
+        <div class="terminal-title">LAWRENCE_SHELL.sh</div>
+        <div class="font-mono" style="font-size:10px; color:var(--text-muted);">ONLINE</div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-line out-dim">// LAWRENCE DEV TRANSMISSION SYSTEM</div>
+        <div class="terminal-line out-cyan">// Type 'help' to review commands, or 'art' for poetry & literary data.</div>
+      </div>
+      <div style="padding:10px 16px; background:var(--bg-tertiary); border-top:1px solid var(--border-subtle);">
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">lawrence@sys:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input" placeholder="type 'help', 'poetry', 'about'..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Action Contact Cards -->
+    <div class="contact-grid">
+      <a href="mailto:lheklah@st.ug.edu.gh" class="contact-card" id="copyEmailBtn" data-cursor="COPY">
+        <div class="contact-card-info">
+          <span class="label">DIRECT EMAIL</span>
+          <span class="val">lheklah@st.ug.edu.gh</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[COPY]</span>
+      </a>
+
+      <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">GITHUB PROFILE</span>
+          <span class="val">github.com/Lawrence-cell</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card" data-cursor="EXTERNAL">
+        <div class="contact-card-info">
+          <span class="label">LINKEDIN</span>
+          <span class="val">Lawrence</span>
+        </div>
+        <span class="font-mono text-cyan" style="font-size:11px;">[↗]</span>
+      </a>
+    </div>
+
+    <!-- Bottom Telemetry Footer -->
+    <div class="footer-bottom">
+      <div>
+        <span>LAWRENCE // PORTFOLIO</span>
+      </div>
+      <div>
+        <span>ABOUT • PROJECTS • TEAM • ART</span>
+      </div>
+      <div>
+        <span>ALL RIGHTS RESERVED © 2026</span>
+      </div>
+    </div>
+  </section>
+  <!-- ========================================================================
+       END: CONTACT & TERMINAL SESSION
+       ======================================================================== -->
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="pulse-dot"></span>
+    <span id="toastMsg">CONFIRMED</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/scramble.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

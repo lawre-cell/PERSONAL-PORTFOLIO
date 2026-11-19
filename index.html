@@ -81,10 +81,10 @@
     <!-- Navigation Tabs: ABOUT, PROJECTS, TEAM, ART -->
     <nav>
       <ul class="nav-links">
-        <li><a href="#about" class="nav-link" data-scramble>ABOUT</a></li>
-        <li><a href="#projects" class="nav-link" data-scramble>PROJECTS</a></li>
-        <li><a href="#team" class="nav-link" data-scramble>TEAM</a></li>
-        <li><a href="#art" class="nav-link" data-scramble>ART</a></li>
+        <li><a href="about.html" class="nav-link" data-scramble>ABOUT</a></li>
+        <li><a href="projects.html" class="nav-link" data-scramble>PROJECTS</a></li>
+        <li><a href="team.html" class="nav-link" data-scramble>TEAM</a></li>
+        <li><a href="art.html" class="nav-link" data-scramble>ART</a></li>
       </ul>
     </nav>
 
@@ -170,23 +170,23 @@
 
       <!-- 4-Tab Equal Session Selector -->
       <div class="hero-session-selector">
-        <a href="#about" class="session-tab-card" data-cursor="ABOUT">
-          <span class="tab-num">// TAB 01</span>
+        <a href="about.html" class="session-tab-card" data-cursor="ABOUT">
+          <span class="tab-num">// PAGE 01</span>
           <span class="tab-name">ABOUT</span>
           <span class="tab-desc">Identity, Education & Philosophy</span>
         </a>
-        <a href="#projects" class="session-tab-card" data-cursor="PROJECTS">
-          <span class="tab-num">// TAB 02</span>
+        <a href="projects.html" class="session-tab-card" data-cursor="PROJECTS">
+          <span class="tab-num">// PAGE 02</span>
           <span class="tab-name">PROJECTS</span>
           <span class="tab-desc">Software & Data Science Builds</span>
         </a>
-        <a href="#team" class="session-tab-card" data-cursor="TEAM">
-          <span class="tab-num">// TAB 03</span>
+        <a href="team.html" class="session-tab-card" data-cursor="TEAM">
+          <span class="tab-num">// PAGE 03</span>
           <span class="tab-name">TEAM</span>
           <span class="tab-desc">Collaborators, Mission & Roster</span>
         </a>
-        <a href="#art" class="session-tab-card" data-cursor="ART">
-          <span class="tab-num">// TAB 04</span>
+        <a href="art.html" class="session-tab-card" data-cursor="ART">
+          <span class="tab-num">// PAGE 04</span>
           <span class="tab-name">ART</span>
           <span class="tab-desc">Poetry, Verses & Visual Media</span>
         </a>
@@ -232,674 +232,95 @@
 
 
   <!-- ========================================================================
-       START: TAB 01 - ABOUT SESSION
-       Speaks of: Personal Identity, Biography, Education, Core Disciplines, Timeline & Philosophy
+       START: PORTFOLIO PORTAL DIRECTORY (SEPARATE DEDICATED PAGES)
        ======================================================================== -->
-  <section class="about-section session-block" id="about">
+  <section class="session-block" id="directory" style="padding: 72px 36px;">
     <div class="section-header" style="max-width:1280px; margin:0 auto 36px auto;">
       <div class="section-title-wrap">
-        <span class="sub">// SESSION 01</span>
-        <h2 class="section-title">ABOUT</h2>
+        <span class="sub">// PORTAL ARCHITECTURE</span>
+        <h2 class="section-title">PORTFOLIO DIRECTORY</h2>
       </div>
       <div class="font-mono text-muted" style="font-size:11px;">
-        IDENTITY, EDUCATION, DISCIPLINES & MANIFESTO
+        4 DEDICATED PAGES RESPECTIVELY
       </div>
     </div>
 
-    <!-- NODE 1.1: IDENTITY & BIOGRAPHY GRID -->
-    <div class="about-grid">
-      <!-- ID Card Frame with Photo -->
-      <div class="id-card-frame corner-frame" data-cursor="PHOTO">
-        <div class="id-card-header">
-          <span>IDENTITY // ID: #001</span>
-          <span class="badge-telemetry active">VERIFIED</span>
-        </div>
-        <div class="id-card-photo-wrap">
-          <img src="assets/images/lawrence-formal.jpg" alt="Lawrence Portrait" />
-        </div>
-        <div class="id-card-meta">
-          <div class="id-card-row">
-            <span class="k">NAME:</span>
-            <span class="v">LAWRENCE</span>
+    <div class="portal-directory-grid">
+      <!-- Page 01: ABOUT -->
+      <a href="about.html" class="portal-page-card corner-frame" data-cursor="ABOUT">
+        <div>
+          <div class="card-meta">
+            <span>PAGE // 01</span>
+            <span class="badge-telemetry active">IDENTITY</span>
           </div>
-          <div class="id-card-row">
-            <span class="k">DISCIPLINES:</span>
-            <span class="v">Data Science • Software • Poetry</span>
-          </div>
-          <div class="id-card-row">
-            <span class="k">HANDLE:</span>
-            <span class="v">@Lawrence-cell</span>
-          </div>
-          <div class="id-card-row">
-            <span class="k">LOCATION:</span>
-            <span class="v">[ Enter Your City / Region ]</span>
-          </div>
-          <div class="id-card-row">
-            <span class="k">STATUS:</span>
-            <span class="v" style="color:var(--accent-emerald);">[ Available for Collaboration ]</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NODE 1.2: BIOGRAPHY & NARRATIVE -->
-      <div class="about-narrative">
-        <div class="hero-eyebrow">
-          <span class="line"></span>
-          <span>// 01. BIOGRAPHY & NARRATIVE</span>
-        </div>
-        <h2>[ YOUR HEADLINE / ABOUT TITLE ]</h2>
-        <p>
-          [ Write your main biography and story here. Explain who you are, how you navigate across data science, software engineering, and the written poetic word. Ready for your own words. ]
-        </p>
-        <p>
-          [ Second paragraph placeholder: detail your research perspective, your technical passions, the complex systems you build, and your artistic drive. ]
-        </p>
-        <p>
-          [ Third paragraph placeholder: describe your broader goals, current explorations, or creative vision. ]
-        </p>
-
-        <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
-          <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener" class="btn-primary" data-cursor="GITHUB">
-            <span>GITHUB</span>
-            <span>↗</span>
-          </a>
-          <a href="#projects" class="btn-secondary" data-cursor="PROJECTS">
-            <span>PROJECTS</span>
-            <span>→</span>
-          </a>
-          <a href="#team" class="btn-secondary" data-cursor="TEAM">
-            <span>TEAM</span>
-            <span>→</span>
-          </a>
-          <a href="#art" class="btn-secondary" data-cursor="ART">
-            <span>ART</span>
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 1.3: ACADEMIC CREDENTIALS & EDUCATION -->
-    <div class="session-subgrid" style="margin-top:48px;">
-      <div class="session-subcard corner-frame">
-        <div class="session-subcard-header">
-          <span>// 02. EDUCATION & ACADEMICS</span>
-          <span class="badge-telemetry active">ACADEMIC</span>
-        </div>
-        <h3 class="session-subcard-title">UNIVERSITY OF GHANA</h3>
-        <p class="font-mono text-muted" style="font-size:11px;">[ DEGREE / PROGRAM TITLE HERE ]</p>
-        <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
-          [ Enter your degree, department, relevant coursework, academic honors, or thesis topics here. Ready for your text. ]
-        </p>
-        <div class="id-card-row" style="margin-top:8px; border-top:1px solid var(--border-subtle); padding-top:8px; font-family:var(--font-mono); font-size:11px;">
-          <span class="k">INSTITUTION:</span>
-          <span class="v">University of Ghana</span>
-        </div>
-        <div class="id-card-row" style="font-family:var(--font-mono); font-size:11px;">
-          <span class="k">TIMEFRAME:</span>
-          <span class="v">[ Enter Years, e.g. 2022 — Present ]</span>
-        </div>
-      </div>
-
-      <!-- NODE 1.4: CORE DISCIPLINES & CAPABILITIES MATRIX -->
-      <div class="session-subcard corner-frame">
-        <div class="session-subcard-header">
-          <span>// 03. CORE DISCIPLINES</span>
-          <span class="badge-telemetry">CAPABILITIES</span>
-        </div>
-        <h3 class="session-subcard-title">THREE PILLARS OF PRACTICE</h3>
-        <div class="discipline-tags">
-          <span class="discipline-pill active">DATA SCIENCE</span>
-          <span class="discipline-pill active">SOFTWARE SYSTEMS</span>
-          <span class="discipline-pill active">POETICS & LITERATURE</span>
-        </div>
-        <p style="color:var(--text-secondary); font-size:13px; line-height:1.6; margin-top:8px;">
-          [ Enter your technical tools, computational frameworks, and creative methods across these three disciplines. ]
-        </p>
-        <div class="discipline-tags" style="margin-top:6px;">
-          <span class="discipline-pill">[ Python / R / SQL ]</span>
-          <span class="discipline-pill">[ Machine Learning ]</span>
-          <span class="discipline-pill">[ Full-Stack Dev ]</span>
-          <span class="discipline-pill">[ Poetic Meter & Verse ]</span>
-        </div>
-      </div>
-
-      <!-- NODE 1.5: PHILOSOPHY & MANIFESTO -->
-      <div class="session-subcard corner-frame">
-        <div class="session-subcard-header">
-          <span>// 04. PHILOSOPHY & ETHOS</span>
-          <span class="badge-telemetry active">VALUES</span>
-        </div>
-        <h3 class="session-subcard-title">[ GUIDING PRINCIPLE / MOTTO ]</h3>
-        <p style="color:var(--text-secondary); font-size:13px; line-height:1.6; font-style:italic;">
-          "[ Enter your core personal statement, quote, or working manifesto here. The intersection of rigor, empathy, and creative lyricism. ]"
-        </p>
-        <div style="font-family:var(--font-mono); font-size:11px; color:var(--accent-cyan); margin-top:8px;">
-          — Lawrence // Personal Manifesto
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 1.6: TIMELINE & CHRONOLOGY -->
-    <div style="max-width:1280px; margin:48px auto 0 auto;">
-      <div class="hero-eyebrow" style="margin-bottom:20px;">
-        <span class="line"></span>
-        <span>// 05. CHRONOLOGY & MILESTONES</span>
-      </div>
-      <div class="session-subgrid" style="margin-top:16px;">
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <span class="timeline-role">[ MILESTONE 01 ]</span>
-            <span class="timeline-date">[ 2026 ]</span>
-          </div>
-          <div class="timeline-org">[ Organization / Context / Project ]</div>
-          <p class="timeline-desc">[ Enter milestone details, achievement, role, or launch notes here. ]</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <span class="timeline-role">[ MILESTONE 02 ]</span>
-            <span class="timeline-date">[ 2025 ]</span>
-          </div>
-          <div class="timeline-org">[ Organization / Context / Project ]</div>
-          <p class="timeline-desc">[ Enter milestone details, achievement, role, or launch notes here. ]</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <span class="timeline-role">[ MILESTONE 03 ]</span>
-            <span class="timeline-date">[ 2024 ]</span>
-          </div>
-          <div class="timeline-org">[ Organization / Context / Project ]</div>
-          <p class="timeline-desc">[ Enter milestone details, achievement, role, or launch notes here. ]</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ========================================================================
-       END: TAB 01 - ABOUT SESSION
-       ======================================================================== -->
-
-
-  <!-- ========================================================================
-       START: TAB 02 - PROJECTS SESSION
-       Speaks of: Engineering Builds, Data Science Research, Systems & Open Source
-       ======================================================================== -->
-  <section class="projects-section session-block" id="projects">
-    <!-- NODE 2.1: PROJECTS HEADER & VIEW CONTROLS -->
-    <div class="section-header">
-      <div class="section-title-wrap">
-        <span class="sub">// SESSION 02</span>
-        <h2 class="section-title">PROJECTS</h2>
-      </div>
-
-      <div class="view-controls">
-        <!-- View Switcher -->
-        <div class="view-toggle-group">
-          <button class="view-toggle-btn active" id="viewTableBtn" title="Datasheet Table View">
-            <span>≡</span> TABLE
-          </button>
-          <button class="view-toggle-btn" id="viewGridBtn" title="Specimen Card Grid View">
-            <span>☵</span> GRID
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 2.2: DATASHEET TABLE VIEW -->
-    <div class="datasheet-container" id="datasheetContainer">
-      <table class="datasheet-table">
-        <thead>
-          <tr>
-            <th>CODE</th>
-            <th>PROJECT TITLE</th>
-            <th>DOMAIN</th>
-            <th>TECH STACK</th>
-            <th>YEAR</th>
-            <th>STATUS</th>
-            <th style="text-align:right;">ACTION</th>
-          </tr>
-        </thead>
-        <tbody id="datasheetTableBody">
-          <!-- Dynamically populated from js/app.js -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- NODE 2.3: SPECIMEN CARD GRID VIEW -->
-    <div class="specimen-grid" id="specimenGridContainer" style="display:none;">
-      <!-- Dynamically populated from js/app.js -->
-    </div>
-  </section>
-
-  <!-- NODE 2.4: HOVER CURSOR PREVIEW CARD -->
-  <div class="hover-preview-card" id="hoverPreviewCard">
-    <div class="hover-preview-media">
-      <canvas id="hoverPreviewCanvas"></canvas>
-    </div>
-    <div class="hover-preview-info">
-      <div class="hover-preview-title" id="hoverPreviewTitle">[ Project Title ]</div>
-      <div class="hover-preview-desc" id="hoverPreviewDesc">[ Project Summary ]</div>
-      <span class="badge-telemetry active" style="font-size:9px;">CLICK FOR DETAILS</span>
-    </div>
-  </div>
-  <!-- ========================================================================
-       END: TAB 02 - PROJECTS SESSION
-       ======================================================================== -->
-
-
-  <!-- ========================================================================
-       START: TAB 03 - TEAM SESSION
-       Speaks of: Collective Identity, Shared Mission, Roster & Roles, Collaborative Initiatives
-       ======================================================================== -->
-  <section class="team-section session-block" id="team">
-    <div class="section-header" style="max-width:1280px; margin:0 auto 36px auto;">
-      <div class="section-title-wrap">
-        <span class="sub">// SESSION 03</span>
-        <h2 class="section-title">TEAM</h2>
-      </div>
-      <div class="font-mono text-muted" style="font-size:11px;">
-        COLLECTIVE MISSION, ROSTER & ACTIVE INITIATIVES
-      </div>
-    </div>
-
-    <!-- NODE 3.1: COLLECTIVE IDENTITY & MISSION STATEMENT -->
-    <div class="team-mission-banner corner-frame">
-      <div class="session-subcard-header" style="margin-bottom:12px;">
-        <span>// 01. COLLECTIVE IDENTITY & MISSION</span>
-        <span class="badge-telemetry active">SHARED PURPOSE</span>
-      </div>
-      <h3>[ YOUR TEAM / COLLECTIVE NAME HERE ]</h3>
-      <p>
-        [ Enter your team or collective's overarching mission here. Explain what unites you, the computational or research challenges you solve together, and how cross-disciplinary collaboration elevates your work. Ready for your own words. ]
-      </p>
-    </div>
-
-    <!-- NODE 3.2: CORE ROSTER & MEMBER PROFILES -->
-    <div style="max-width:1280px; margin:0 auto 20px auto;">
-      <div class="hero-eyebrow">
-        <span class="line"></span>
-        <span>// 02. CORE ROSTER & COLLABORATORS</span>
-      </div>
-    </div>
-    <div class="team-grid">
-      <!-- Member 1: Lawrence (Lead) -->
-      <div class="team-card corner-frame">
-        <div class="team-card-header">
-          <span>MEMBER #01</span>
-          <span class="badge-telemetry active">LEAD</span>
-        </div>
-        <div class="team-avatar-wrap">
-          <img src="assets/images/lawrence-formal.jpg" alt="Lawrence" />
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-name">LAWRENCE</h3>
-          <span class="team-role">Data Scientist & Software Developer & Poet</span>
-          <p class="team-bio">
-            [ Enter your lead role, focus, and responsibilities within the team or collective here. ]
+          <h3 class="card-title">ABOUT</h3>
+          <p class="card-desc">
+            Personal biography, University of Ghana academic credentials, 3-pillar capabilities matrix, chronology, and manifesto.
           </p>
-          <div class="team-links">
-            <a href="https://github.com/Lawrence-cell" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="mailto:lheklah@st.ug.edu.gh">Email ↗</a>
-          </div>
         </div>
-      </div>
-
-      <!-- Member 2: Engineering / Architecture Collaborator -->
-      <div class="team-card corner-frame">
-        <div class="team-card-header">
-          <span>MEMBER #02</span>
-          <span class="badge-telemetry">ENGINEERING</span>
-        </div>
-        <div class="team-avatar-wrap">
-          <img src="assets/images/lawrence-event.jpg" alt="Team Member 2" />
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
-          <span class="team-role">[ Software Engineer / Systems Architect ]</span>
-          <p class="team-bio">
-            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
-          </p>
-          <div class="team-links">
-            <a href="#">Profile ↗</a>
-            <a href="#">Contact ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Member 3: Data / Research Collaborator -->
-      <div class="team-card corner-frame">
-        <div class="team-card-header">
-          <span>MEMBER #03</span>
-          <span class="badge-telemetry">RESEARCH</span>
-        </div>
-        <div class="team-avatar-wrap">
-          <img src="assets/images/lawrence-cyber.jpg" alt="Team Member 3" />
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
-          <span class="team-role">[ Data Scientist / ML Researcher ]</span>
-          <p class="team-bio">
-            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
-          </p>
-          <div class="team-links">
-            <a href="#">Profile ↗</a>
-            <a href="#">Contact ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Member 4: Design / Creative Collaborator -->
-      <div class="team-card corner-frame">
-        <div class="team-card-header">
-          <span>MEMBER #04</span>
-          <span class="badge-telemetry">CREATIVE</span>
-        </div>
-        <div class="team-avatar-wrap">
-          <img src="assets/images/lawrence-dark.jpg" alt="Team Member 4" />
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-name">[ TEAM MEMBER NAME ]</h3>
-          <span class="team-role">[ Designer / Creative Technologist ]</span>
-          <p class="team-bio">
-            [ Enter team member bio, focus, background, and contributions here. Ready for you to fill up. ]
-          </p>
-          <div class="team-links">
-            <a href="#">Profile ↗</a>
-            <a href="#">Contact ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 3.3: ACTIVE JOINT INITIATIVES -->
-    <div style="max-width:1280px; margin:48px auto 0 auto;">
-      <div class="hero-eyebrow" style="margin-bottom:20px;">
-        <span class="line"></span>
-        <span>// 03. ACTIVE COLLABORATIVE INITIATIVES</span>
-      </div>
-      <div class="session-subgrid" style="margin-top:16px;">
-        <div class="session-subcard corner-frame">
-          <div class="session-subcard-header">
-            <span>INITIATIVE // 01</span>
-            <span class="badge-telemetry active">IN PROGRESS</span>
-          </div>
-          <h3 class="session-subcard-title">[ INITIATIVE 01 TITLE ]</h3>
-          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
-            [ Describe the collaborative build, research agenda, or group system being developed here. ]
-          </p>
-          <div class="font-mono text-muted" style="font-size:11px; margin-top:8px;">
-            TEAM: [ Lawrence + Collaborators ]
-          </div>
-        </div>
-
-        <div class="session-subcard corner-frame">
-          <div class="session-subcard-header">
-            <span>INITIATIVE // 02</span>
-            <span class="badge-telemetry active">ACTIVE</span>
-          </div>
-          <h3 class="session-subcard-title">[ INITIATIVE 02 TITLE ]</h3>
-          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
-            [ Describe the collaborative build, research agenda, or group system being developed here. ]
-          </p>
-          <div class="font-mono text-muted" style="font-size:11px; margin-top:8px;">
-            TEAM: [ Open Source Working Group ]
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 3.4: COLLABORATION & JOIN US -->
-    <div class="team-mission-banner corner-frame" style="margin-top:36px; border-left:3px solid var(--accent-emerald);">
-      <div class="session-subcard-header" style="margin-bottom:12px;">
-        <span>// 04. JOIN / COLLABORATE WITH THE TEAM</span>
-        <span class="badge-telemetry active">OPEN TO TALENT</span>
-      </div>
-      <h3>[ WANT TO BUILD OR RESEARCH WITH US? ]</h3>
-      <p>
-        [ Enter your invitation for collaborators, contributors, student researchers, or sponsors here. Explain how people can connect with your team. ]
-      </p>
-      <div style="margin-top:16px;">
-        <a href="#contact" class="btn-primary" data-cursor="TRANSMISSION">
-          <span>CONNECT WITH TEAM</span>
+        <div class="card-cta">
+          <span>ENTER ABOUT PAGE</span>
           <span>→</span>
-        </a>
-      </div>
+        </div>
+      </a>
+
+      <!-- Page 02: PROJECTS -->
+      <a href="projects.html" class="portal-page-card corner-frame" data-cursor="PROJECTS">
+        <div>
+          <div class="card-meta">
+            <span>PAGE // 02</span>
+            <span class="badge-telemetry active">SYSTEMS</span>
+          </div>
+          <h3 class="card-title">PROJECTS</h3>
+          <p class="card-desc">
+            Engineering builds, data science models, interactive datasheet table view, specimen cards, and deep-dive technical dossiers.
+          </p>
+        </div>
+        <div class="card-cta">
+          <span>ENTER PROJECTS PAGE</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Page 03: TEAM -->
+      <a href="team.html" class="portal-page-card corner-frame" data-cursor="TEAM">
+        <div>
+          <div class="card-meta">
+            <span>PAGE // 03</span>
+            <span class="badge-telemetry active">COLLECTIVE</span>
+          </div>
+          <h3 class="card-title">TEAM</h3>
+          <p class="card-desc">
+            Collective mission statement, core 4-member multidisciplinary roster, active joint research initiatives, and collaboration invitations.
+          </p>
+        </div>
+        <div class="card-cta">
+          <span>ENTER TEAM PAGE</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Page 04: ART -->
+      <a href="art.html" class="portal-page-card corner-frame" data-cursor="ART">
+        <div>
+          <div class="card-meta">
+            <span>PAGE // 04</span>
+            <span class="badge-telemetry active">POETICS</span>
+          </div>
+          <h3 class="card-title">ART</h3>
+          <p class="card-desc">
+            Poetic statements, formatted verse anthology, dark aesthetic photography gallery, spoken word audio recitals, and publications.
+          </p>
+        </div>
+        <div class="card-cta">
+          <span>ENTER ART PAGE</span>
+          <span>→</span>
+        </div>
+      </a>
     </div>
   </section>
   <!-- ========================================================================
-       END: TAB 03 - TEAM SESSION
-       ======================================================================== -->
-
-
-  <!-- ========================================================================
-       START: TAB 04 - ART SESSION
-       Speaks of: Poetry Collections, Stanzas & Verses, Visual Art, Spoken Word & Publications
-       ======================================================================== -->
-  <section class="art-section session-block" id="art">
-    <div class="section-header" style="max-width:1280px; margin:0 auto 36px auto;">
-      <div class="section-title-wrap">
-        <span class="sub">// SESSION 04</span>
-        <h2 class="section-title">ART</h2>
-      </div>
-      <div class="font-mono text-muted" style="font-size:11px;">
-        POETRY ANTHOLOGY, VERSES & VISUAL EXPRESSIONS
-      </div>
-    </div>
-
-    <!-- NODE 4.1: ARTISTIC STATEMENT & POETIC PHILOSOPHY -->
-    <div class="art-statement-banner corner-frame">
-      <div class="session-subcard-header" style="margin-bottom:12px;">
-        <span>// 01. ARTISTIC & POETIC STATEMENT</span>
-        <span class="badge-telemetry active">PHILOSOPHY</span>
-      </div>
-      <h3>[ POETICS, LYRICISM & THE CREATIVE MIND ]</h3>
-      <p>
-        "[ Enter your creative statement and poetic vision here. Explain how poetry lives alongside data science and code, the human emotions you translate into words, and the rhythmic voice you cultivate. Ready for your own words. ]"
-      </p>
-      <div style="font-family:var(--font-mono); font-size:11px; color:var(--accent-magenta); margin-top:12px;">
-        — Lawrence // Poetic Statement
-      </div>
-    </div>
-
-    <!-- NODE 4.2: POETRY ANTHOLOGY & SELECTED VERSES -->
-    <div style="max-width:1280px; margin:0 auto 20px auto;">
-      <div class="hero-eyebrow">
-        <span class="line"></span>
-        <span>// 02. POETRY ANTHOLOGY & SELECTED VERSES</span>
-      </div>
-    </div>
-    <div class="art-grid">
-      <!-- Poem 01 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>POEM #01</span>
-          <span class="badge-telemetry active">POETRY</span>
-        </div>
-        <div class="art-card-body" style="padding:28px 24px;">
-          <span class="art-type">// VERSE & LYRICS</span>
-          <h3 class="art-title">[ FIRST POEM TITLE ]</h3>
-          <div class="art-content">
-[ Stanza 1: Write or paste your first stanza here.
-Rhyme, meter, or free verse.
-Ready for your lyrical cadence. ]
-
-[ Stanza 2: Write or paste your second stanza here.
-Express your imagery, feeling, and thought. ]
-          </div>
-        </div>
-        <div class="art-card-footer">
-          <span>YEAR: [ 2026 ]</span>
-          <span>THEME: [ EXISTENCE / METRIC ]</span>
-        </div>
-      </div>
-
-      <!-- Poem 02 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>POEM #02</span>
-          <span class="badge-telemetry active">POETRY</span>
-        </div>
-        <div class="art-card-body" style="padding:28px 24px;">
-          <span class="art-type">// VERSE & LYRICS</span>
-          <h3 class="art-title">[ SECOND POEM TITLE ]</h3>
-          <div class="art-content">
-[ Stanza 1: Write or paste your first stanza here.
-Explore language, silence, and truth. ]
-
-[ Stanza 2: Write or paste your second stanza here.
-Reflect on the world, light, and shadows. ]
-          </div>
-        </div>
-        <div class="art-card-footer">
-          <span>YEAR: [ 2026 ]</span>
-          <span>THEME: [ REFLECTION ]</span>
-        </div>
-      </div>
-
-      <!-- Poem 03 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>POEM #03</span>
-          <span class="badge-telemetry active">POETRY</span>
-        </div>
-        <div class="art-card-body" style="padding:28px 24px;">
-          <span class="art-type">// VERSE & LYRICS</span>
-          <h3 class="art-title">[ THIRD POEM TITLE ]</h3>
-          <div class="art-content">
-[ Stanza 1: Write or paste your poem or prose poem here.
-Craft your rhythm and line breaks. ]
-
-[ Stanza 2: Final lines and resolving cadence. ]
-          </div>
-        </div>
-        <div class="art-card-footer">
-          <span>YEAR: [ 2025 ]</span>
-          <span>THEME: [ DREAMS & CODE ]</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 4.3: VISUAL ART & PHOTOGRAPHY GALLERY -->
-    <div style="max-width:1280px; margin:48px auto 20px auto;">
-      <div class="hero-eyebrow">
-        <span class="line"></span>
-        <span>// 03. VISUAL ART & PHOTOGRAPHY</span>
-      </div>
-    </div>
-    <div class="art-grid">
-      <!-- Visual Piece 1 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>VISUAL #01</span>
-          <span class="badge-telemetry">PHOTOGRAPHY</span>
-        </div>
-        <div class="art-media-wrap">
-          <img src="assets/images/lawrence-dark.jpg" alt="Visual Art Piece" />
-        </div>
-        <div class="art-card-body">
-          <span class="art-type">// SHADOWS & AESTHETICS</span>
-          <h3 class="art-title">[ VISUAL PIECE 01 TITLE ]</h3>
-          <p class="team-bio">
-            [ Enter the description, medium, mood, or story behind this photographic / visual work. ]
-          </p>
-        </div>
-        <div class="art-card-footer">
-          <span>MEDIUM: [ Photography ]</span>
-          <span>YEAR: [ 2026 ]</span>
-        </div>
-      </div>
-
-      <!-- Visual Piece 2 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>VISUAL #02</span>
-          <span class="badge-telemetry">DIGITAL ART</span>
-        </div>
-        <div class="art-media-wrap">
-          <img src="assets/images/lawrence-cyber.jpg" alt="Digital Art Piece" />
-        </div>
-        <div class="art-card-body">
-          <span class="art-type">// CYBER & EXPERIMENTAL</span>
-          <h3 class="art-title">[ VISUAL PIECE 02 TITLE ]</h3>
-          <p class="team-bio">
-            [ Enter the creative computation concept, lighting, or narrative behind this piece. ]
-          </p>
-        </div>
-        <div class="art-card-footer">
-          <span>MEDIUM: [ Generative / Digital ]</span>
-          <span>YEAR: [ 2026 ]</span>
-        </div>
-      </div>
-
-      <!-- Visual Piece 3 -->
-      <div class="art-card corner-frame">
-        <div class="art-card-header">
-          <span>VISUAL #03</span>
-          <span class="badge-telemetry">COMPOSITION</span>
-        </div>
-        <div class="art-media-wrap">
-          <img src="assets/images/lawrence-event.jpg" alt="Composition Piece" />
-        </div>
-        <div class="art-card-body">
-          <span class="art-type">// FORM & LIGHT</span>
-          <h3 class="art-title">[ VISUAL PIECE 03 TITLE ]</h3>
-          <p class="team-bio">
-            [ Enter the visual statement, captured moment, or creative direction here. ]
-          </p>
-        </div>
-        <div class="art-card-footer">
-          <span>MEDIUM: [ Editorial / Lens ]</span>
-          <span>YEAR: [ 2025 ]</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- NODE 4.4: SPOKEN WORD & AUDIO READINGS -->
-    <div style="max-width:1280px; margin:48px auto 0 auto;">
-      <div class="hero-eyebrow" style="margin-bottom:20px;">
-        <span class="line"></span>
-        <span>// 04. SPOKEN WORD & AUDIO PERFORMANCES</span>
-      </div>
-      <div class="session-subgrid" style="margin-top:16px;">
-        <div class="session-subcard corner-frame">
-          <div class="session-subcard-header">
-            <span>AUDIO // PERFORMANCE 01</span>
-            <span class="badge-telemetry active">RECITAL</span>
-          </div>
-          <h3 class="session-subcard-title">[ SPOKEN WORD RECITAL TITLE ]</h3>
-          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
-            [ Enter recital details: spoken voice, poem recital with instrumental backing, or live reading recording. ]
-          </p>
-          <div class="audio-player-widget">
-            <span class="pulse-dot" style="background:var(--accent-magenta);"></span>
-            <div class="audio-player-waveform">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <span class="font-mono text-muted" style="font-size:11px;">[ READY FOR AUDIO FILE ]</span>
-          </div>
-        </div>
-
-        <!-- NODE 4.5: PUBLICATIONS & LITERARY SHOWCASES -->
-        <div class="session-subcard corner-frame">
-          <div class="session-subcard-header">
-            <span>PUBLICATIONS & EXHIBITIONS</span>
-            <span class="badge-telemetry">LITERARY</span>
-          </div>
-          <h3 class="session-subcard-title">WORDS IN PRINT & PUBLIC</h3>
-          <p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">
-            [ List any journals, literary magazines, anthologies, recitals, or creative showcases where your work appeared. ]
-          </p>
-          <div class="timeline-header" style="margin-top:8px;">
-            <span class="timeline-role">[ PUBLICATION / SHOWCASE 01 ]</span>
-            <span class="timeline-date">[ 2026 ]</span>
-          </div>
-          <p class="font-mono text-muted" style="font-size:11px;">[ Outlet / Venue / Details ]</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ========================================================================
-       END: TAB 04 - ART SESSION
+       END: PORTFOLIO PORTAL DIRECTORY (SEPARATE DEDICATED PAGES)
        ======================================================================== -->
 
 
