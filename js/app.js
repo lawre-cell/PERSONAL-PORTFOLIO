@@ -15,7 +15,7 @@ const PROJECTS_DATA = [
     status: 'prod',
     statusLabel: 'Production',
     summary: '[ Enter your project summary and description here. Ready for your own text. ]',
-    github: 'https://github.com/Lawrence-cell',
+    github: 'https://github.com/Lawre-cell',
     features: [
       '[ Key feature or achievement 01 ]',
       '[ Key feature or achievement 02 ]',
@@ -34,7 +34,7 @@ const PROJECTS_DATA = [
     status: 'oss',
     statusLabel: 'Open Source',
     summary: '[ Enter your project summary and description here. Ready for your own text. ]',
-    github: 'https://github.com/Lawrence-cell',
+    github: 'https://github.com/Lawre-cell',
     features: [
       '[ Key feature or achievement 01 ]',
       '[ Key feature or achievement 02 ]'
@@ -52,7 +52,7 @@ const PROJECTS_DATA = [
     status: 'prod',
     statusLabel: 'Production',
     summary: '[ Enter your project summary and description here. Ready for your own text. ]',
-    github: 'https://github.com/Lawrence-cell',
+    github: 'https://github.com/Lawre-cell',
     features: [
       '[ Key feature or achievement 01 ]',
       '[ Key feature or achievement 02 ]'
@@ -70,7 +70,7 @@ const PROJECTS_DATA = [
     status: 'exp',
     statusLabel: 'Experimental',
     summary: '[ Enter your project summary and description here. Ready for your own text. ]',
-    github: 'https://github.com/Lawrence-cell',
+    github: 'https://github.com/Lawre-cell',
     features: [
       '[ Key feature or achievement 01 ]',
       '[ Key feature or achievement 02 ]'
@@ -765,7 +765,7 @@ class PortfolioApp {
         outLine.className += ' out-green';
         outLine.innerHTML = `
           EMAIL   : lheklah@st.ug.edu.gh<br>
-          GITHUB  : https://github.com/Lawrence-cell<br>
+          GITHUB  : https://github.com/Lawre-cell<br>
           STATUS  : OPEN FOR CONTRACTS / ROLES 2026
         `;
         break;
